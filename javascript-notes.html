@@ -172,8 +172,14 @@
                 <p>Errors are super helpful for debugging code</p>
                 <p>Debugger can be helpful for finding and fixing errors</p>
             <h2>Example project: Rock Paper Scissors</h2>
-                <button id="rochambeau">Play Rock Paper Scissors! Best of three wins.</button>
-                <script src="scripts.js"></script>
+                <div class="neutral-element flex-element-horizontal">
+                    <button id="rochambeau-v1">Play Rock Paper Scissors! Text version</button>
+                    <button id="rochambeau-v2">Play Rock Paper Scissors! UI version</button>
+                    <script src="scripts.js"></script>
+                </div>
+                <div class="neutral-element flex-element-vertical" id="rps-ui-container">
+                    <!-- div for rps ui -->
+                </div>
             <h2>Clean Code</h2>
                 <p>Descriptive, consistent, readable</p>
                 <p>Use camelCase for naming variables and functions generally, though not always</p>
@@ -289,8 +295,6 @@
                     }
 
                     shopButton.addEventListener("click", addItemButton);
-                    
-
                 </script>
 
         </div>

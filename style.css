@@ -24,6 +24,28 @@ div {
   all: revert;
 }
 
+.flex-element-horizontal {
+  display: flex;
+}
+
+.flex-element-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-image {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  object-position: center;
+  border: 5px solid #008800;
+  border-radius: 20%;
+  align-self: center;
+  margin: auto;
+  display: block;
+
+}
+
 .title {
   background: #eee;
   padding: 20px;

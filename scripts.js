@@ -1,16 +1,25 @@
 if (document.body.classList.contains("javascript-notes-body")) {
-    const rochambeauButton = document.querySelector("#rochambeau");
-    rochambeauButton.addEventListener("click", playRPSGame);
+    const rochambeauButtonText = document.querySelector("#rochambeau-v1");
+    const rochambeauButtonUI = document.querySelector("#rochambeau-v2");
+    rochambeauButtonText.addEventListener("click", playRPSGameText);
+    rochambeauButtonUI.addEventListener("click", playRPSGameUI)
+}
+
+function setButtonDisabled(isActive) {
+    const rochambeauButtonText = document.querySelector("#rochambeau-v1");
+    const rochambeauButtonUI = document.querySelector("#rochambeau-v2");
+    rochambeauButtonText.disabled = isActive;
+    rochambeauButtonUI.disabled = isActive;
 }
 
 
-
-function playRPSGame() {
+function playRPSGameText() {
+    setButtonDisabled(true);
     let playerScore = 0;
     let computerScore = 0;
     alert("Let's player rock paper scissors! First to three wins.");
     while (playerScore < 3 & computerScore < 3) {
-        let result = playRPSRound();
+        let result = playRPSRoundText();
         let message = "";
         switch (result) {
             case ("tie"):
@@ -33,9 +42,10 @@ function playRPSGame() {
     else {
         alert(`Oh no! You lost! Final score: \nYou: ${playerScore}, Computer: ${computerScore} \nAI IS TAKING OVER THE WOOOOORLD!!!`);
     }
+    setButtonDisabled(false);
 }
 
-function playRPSRound() {
+function playRPSRoundText() {
     const choices = ["rock", "paper", "scissors"];
     const computerInput = choices[Math.floor(Math.random() * 3)];
     console.log(computerInput);
@@ -52,4 +62,35 @@ function playRPSRound() {
             return "player win";
         
     }
+}
+
+function playRPSGameUI() {
+    setButtonDisabled(true);
+    let playerScore = 0;
+    let computerScore = 0;
+    const uiContainer = document.querySelector("#rps-ui-container");
+    const uiScoreboard = document.createElement("div");
+    const uiRPSIcons = document.createElement("div");
+    uiRPSIcons.classList.add("flex-element-horizontal");
+    const rockIcon = document.createElement("img");
+    const paperIcon = document.createElement("img");
+    const scissorsIcon = document.createElement("img");
+    const rpsIcons = [rockIcon, paperIcon, scissorsIcon];
+    const rpsImages = ["./images/rock.jpg", "./images/paper.png", "./images/scissors.jpg"];
+    for (i = 0; i < rpsIcons.length; i++) {
+        let icon = rpsIcons[i];
+        let source = rpsImages[i];
+        icon.classList.add(".button-image");
+        icon.src = source;
+        icon.height = 100;
+        icon.width = 100;
+        uiRPSIcons.appendChild(icon);
+    }
+    uiContainer.appendChild(uiRPSIcons);
+    
+
+
+    setButtonDisabled(false);
+
+    
 }
