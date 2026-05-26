@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP Testing</title>
+</head>
+<body>
+    <h1>Hello world!</h1>
+    <h1>Notes: Different text things</h1>
+        <h2>Some basic tags</h2>
+            <p>Use the (angle brackets) tag to make paragraphs</p>
+            <p>Use the (angle brackets) h1, h2, h3, h4, h5, or h6 tags for headers</p>
+            <p>Use the <strong>strong</strong> tag to bold text.</p>
+            <p>Use the <em>em</em> tage to italicize text <em>(It stands for emphasize I guess?)</em></p>
+        <h2>Nesting and Indentation</h2>
+            <p>We can nest elements within each other. Doing so creates a 'parent child' relationship where the nested elements are the children and the elements they are nested within are the parents.</p>
+            <p>When two elements are nested under the same parent, like these top two paragraphs, they are called siblings.</p>
+        <h2>HTML Comments Exist</h2>
+            <!-- You can't see them from the web browser-->
+             <p>You can only see them from the html file.</p>
+             <p>Use control / to comment code.</p>
+        <h2>Lorem Text</h2>
+            <p>If you're feeling lazy or just uninspired, type lorem then enter to generate random lorem text (at least in VS Code)</p>
+            <p>Example: Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto repudiandae quo ipsum aliquam voluptas qui quasi deleniti eaque tempora vero, illum ad mollitia accusantium praesentium a placeat amet fuga ducimus.</p>
+        <h2>Lists!</h2>
+            <h3>Unordered Lists</h3>
+                <p>You can create unordered lists for things where order doesn't matter, like bullet points and stuff.</p>
+                <p>To do so, use (angle brackets) ul to start and end the list, then (angle brackets) li for each item</p>
+                <ul>
+                    <li>Here's an example</li>
+                    <li>Here's a second bullet point</li>
+                    <li>And a third!</li>
+                </ul>
+            <h3>Ordered Lists</h3>
+                <p>You can do the same thing but with ordered list when order matters.</p>
+                <p>Similarly, use (angle brackets) ol (for ordered list instead of unordered list ul) to start and end the list, then (angle brackets) li for each item still.</p>
+                <ol>
+                    <li>Here's example one</li>
+                    <li>2</li>
+                    <li>C</li>
+                    <li>fourth</li>
+                    <li>last</li>
+                </ol>
+        <h2>Links</h2>
+            <p>Links are cool (see the image section for why, perhaps)</p>
+            <p>To create a link, use anchor elements, which use &lt;a&gt; to open and close. Within the first angle brackets, do a then href="your link here", which will ultimately desgnate something as a <a href="https://zelda.fandom.com/wiki/Link">link</a>.</p>
+            <p>You can link anything, not just other html documents. <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Videos</a>, pdfs, images, whatever your heart desires.</p>
+            <!--I'm too lazy to find clever links for pdf and images, but could definitely do something funny there...-->
+            <p>If you want to open links in a new tab instead of changing the current tab, use target. Target specifies where the linked resource will be opened. By default it takes the _self value, to open in a new tab we use _blank. For example, <a href="https://www.google.com/fbx?fbx=snake_arcade" target="_blank" rel="noreferrer">this</a> opens in a new tab.</p>
+            <p>There's also a rel parameter. The above example set it to "noreferrer", but you could also do "noopener."</p>
+            <ul>
+                <li>"noopener" prevents the new tab from accessing the original page, which is apparently risky for phishing attacks and tabnabbing.</li>
+                <li>"noreferrer" is the same as noopener but also prevents certain details about the original page from being passed to the new page, as referrer information is not always desirable to share.</li>
+            </ul>
+            <p>There are two general kinds of links we'll create:</p>
+            <ol>
+                <li>Absolute Links: links to pages on other websites. Include scheme://domain/path, and will always include scheme and domain. (for example, <a href="https://www.theodinproject.com/about">https://www.theodinproject.com/about</a>).</li>
+                <li>Relative Links: links to other pages within our own websites. We can have multiple html files in the same directory. If so, href="filename.html". But you could also put them inside directories under the one index is in, in which case it becomes href="dir/filename.html".</li>
+            </ol>
+        <h2>Images</h2>
+            <p>Why are links so cool you asked?</p>
+            <img src="./images/link_sunglasses.jpg" alt="Cool Link" height="310" width="310">
+            <p>Images exist! use &lt;img&gt; to create one, and src="whatever" to specify which image.</p>
+            <p><strong>Sidenote:</strong> sometimes for images or maybe also relative links you want to go to a parent directory first then a child direction. In these cases, use ..</p>
+            <p>Alt attribute exists: after src, add in alt="alternative text for the image"</p>
+            <p>You can also specify height and width using height="some number" width="some number".</p>
+            <p><strong>Another Sidenote:</strong> turns out you can type &lt; and &gt; by enclosing them with &amp; and ; I did not know this at first, hence the (angle brackets), and I'm too lazy to go edit it all right now, so yeah good to know for future reference lol.</p>
+    
+    <h1>Notes on CSS</h1>
+            <p>Click <a href="css-notes.html">this link</a> for my notes.</p>
+    <h1>Notes on Flexbox</h1>
+            <p>Click <a href="flexbox-notes.html">this link</a> for my notes.</p>
+    <h1>Notes on JavaScript</h1>
+            <p>Click <a href="javascript-notes.html">this link</a> for my notes.</p>
+
+</body>
+</html>

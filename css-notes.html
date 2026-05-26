@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Skranji:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">Notes on CSS (Cascading Style Sheets)</h1>
+        <button><a href="index.html">Home</a></button>
+        <div>
+        <h2>Basic Syntax</h2>
+        <p>At the most basic level, CSS is made up of various rules, where each rule has a selector and a semicolon separates list of declarations, with each declaration having a property-value pair.</p>
+            <ul>
+                <li><strong>Selectors</strong> refer to the HTML elements to which CSS rules apply. Some examples:</li>
+                    <ul>
+                        <li>Universal Selector: *</li>
+                        <li>Type selectors (ex: div, p, h1, etc)</li>
+                    <p class="code"> body {<br>&nbsp;...<br>} </p>
+                        <li>Class selectors (when declaring an html element you can specify a class), which are indicated with a period .</li>
+                    <p class="code"> .tag {<br>&nbsp;...<br>} </p>
+                        <li>Id selectors (when declaring an html element you can specify an id, but elements can only have one id and they can have multiple classes), which are indicated with a hashtag #</li>
+                    <p class="code"> #something {<br>&nbsp;...<br>} </p>
+                        <li>Grouping selectors: not a type, but a strategy. When assigning a declaration to a selector, can group multiple selectors together with commas</li>
+                        <li>Chaining selectors: again, not a type but a strategy, can chain two or more selectors together (ex: .example.header instead of .example, .header) to specify that element must have both of those categories.</li>
+                        <li>Combinator: four types, one is the descendant combinator, a single space between selectors indicates the first one must be a parent of the second one.</li>
+                    </ul>
+                <li><strong>Properties</strong> are CSS properties to manipulate html styless.
+                    <ul>
+                        <li>color: sets an element's text's color (can take hex, rgb, or hsl)</li>
+                        <li>background color: sets the background color of an element (can take hex, rgb, or hsl)</li>
+                        <li>font family: determines what font an element uses, can be a single value or a list in which case it chooses the first one but if not available might default to the next one</li>
+                        <li>font size: set size of font</li>
+                        <li>font weight: affects boldness of text, if bolded</li>
+                        <li>text-align: align text horizontally within an element, can change with center or left/right</li>
+                        <li>image height and width: best to include in both html and css, as including it in html will reserve space for it on the page when it loads</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+        <h2>Adding CSS to HTML</h2>
+            <p>There are three ways:</p>
+            <ol>
+                <li>External CSS: create separate file for the CSS and link it inside an HTML's opening and closing head tags with a link element: &lt;link rel="stylesheet" href="filename.css"&gt; Pros: keeps HTML and CSS separated, meaning smaller cleaner html file, and only need to edit CSS in one place, great for websites with many pages that all share similar styles.</li>
+                <li>Internal CSS: add the CSS within the HTML file itself. Add everything within a style tag within the head area. Decent for websites with only a single page, but can get pretty big.</li>
+                <li>Inline CSS: not recommended, but can do it in the html itself by directly specifying style="color: whatever; background-color: etc;"</li>
+            </ol>
+        </div>
+        <div>
+        <h2>Cascades</h2>
+            <p>Cascade in CSS is essentially a hierarchy of what gets chosen over what.</p>
+            <p>Specificity: how specific something is. Every type of selector has it's own level.</p>
+            <ol>
+                <li>id: most specific (of the three)</li>
+                <li>class: second most specific (of the three)</li>
+                <li>type: third most specific (of the three)</li>
+            </ol>
+            <p>Note also that number of selectors can influence specificity: something with two classes is more specific than one class, but one id is more specific than two classes.</p>
+            <p>Not everything influences specificity, like combinators like decsendent / child etc.</p>
+            <p>Inheritance exists: certain attributes will descend down the inheritance, so all the children of something will inherit from descendents.</p>
+            <p>Generally, typography based properties are inherited and others are not, but it depends and you can <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color#formal_definition">check MDM (here's the example for color)</a> on a case by case basis.</p>
+            <p><strong>The Tiebreaker:</strong> should all else fail and two rules are equally specific, whichever was defined last 'wins.' This is known as rule order.</p>
+        </div>
+        <div>
+        <h2>Inspector</h2>
+            <p>The inspector exists and is kinda cool, lots of cool stuff to do with it...</p>
+            <ol>
+                <li>Open it: many ways, right click an element and say inspect, ctrl c, ctrl j for java script, ctrl i for last tab or something, f12</li>
+                <li>Inspect: when it's open, you can see the html stuff </li>
+                <li>Play around: the DOM, basically tree of stuff you can drag around, also can use the styles tab to adjust other stuff, lots of options</li>
+            </ol>
+        </div>
+        <div>
+        <h2>Box model</h2>
+            <p>Everything is boxes! Every box has margin, padding, and border.</p>
+        </div>
+        
+
+</body>
+</html>

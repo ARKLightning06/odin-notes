@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Skranji:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">Notes on Flexbox</h1>
+    <button><a href="index.html">Home</a></button>
+<div id="flex-body">    
+    <div class="flex-item-one">
+    <h2>Intro</h2>
+        <p>Flexbox arranges things horizontally or vertically and flexes, i.e. grows/shrinks, to fit a space.</p>
+        <p>Two main parts:</p>
+        <ul>
+            <li>Flex container: an element containing flex items... contains <span class="code">display: flex</span> in it</li>
+            <li>Flex item: an item in a flex container</li>
+        </ul>
+        <p>An element can be an item and a container</p>
+    </div>
+    <div class="flex-item-two">
+        <h2>Grow Shrink Basis</h2>
+        <p>There are three main properties of flex:</p>
+        <ol>
+            <li><b>flex-grow</b>: Determines how much extra space it will get</li>
+            <li><b>flex-shrink</b>: Determines how much it's willing to shrink relative to others</li>
+            <li><b>flex-basis</b>: Determines the original size</li>
+        </ol>
+        <p>There are many <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex">shorthands</a> for all these:</p>
+        <ul>
+            <li><span class="code">flex: none</span> = <span class="code">flex: 0, 0, auto</span></li>
+            <li><span class="code">flex: auto</span> = <span class="code">flex: 1, 1, auto</span></li>
+            <li><span class="code">flex: n</span> = <span class="code">flex: n, 1, 0</span></li>
+        </ul>
+    </div>
+    <div class="flex-item-two">
+        <h2>Axes</h2>
+        <p>Two axes: horizontal and vertical. The default is horizontal, or row, but can also do vertical, or column</p>
+        <p>Use <span class="code">flex-direction: row/column</span> to change</p>
+        <p>Note that you have to specify basis to auto instead of using the shorthand <span class="code">flex: 1</span> with column direction sometimes, becasue a container will default to the size of its content, and if basis is 0 it might collapse</p>
+        <p>Also, changing flex-direction changes flex-basis: by default, with direction: row, flex-basis refers to width. With flex-direction: column, it refers to height</p>
+        <p>You can also change the order: <span class="code">flex-direction: row-reverse</span> will order things in reverse order, same with column-reverse. You can also specify order with <span class="code">order: n</span></p>
+    </div>
+    <div class="flex-item-one">
+        <h2>Alignment</h2>
+        <p>Can arrange more interestingly</p>
+        <ul>
+            <li>On the <b>main axis:</b> put <span class="code">justify-content: space-between</span> in flex-container class to justify content with space between items. Many other options:</li>
+            <ul>
+                <li><b>Position:</b> <span class="code">flex-start | center | flex-end</span></li> used for both justify-content and align-items
+                <li><b>Spacing:</b> <span class="code">space-between | space-around | space-evenly </span></li> used only for justify-content
+            </ul>
+            <li>On the <b>cross axis:</b> put <span class="code">align-items: space-between</span> in flex-container class to manipulate cross-axis... except really just manipulating all the individual items, hence the align-items. There's also an <span class="code">align-self</span> attribute to put on items rather than containers, align-items is like doing that to all of them</li>
+            <ul>
+                <li>As mentioned, can align position: flex-start, center, and flex-end. However, can't align spacing, because it's affecting the individual items, and you can only really space out a group of items, not each item individually</li>
+                <li>Additionally, there's <span class="code">stretch | baseline</span> which stretch along the cross axis or set that attribute to baseline </li>
+            </ul>
+            <li><span class="code">gap: npx</span> will add a gap of n pixels, which can be useful for various things</li>
+        </ul>
+        <p><b>Hypothetical size</b>: what an item would be in a 'perfect world.' In reality size gets messed up, with flex it's flexible so it can grow or shrink, in flow, the default, it's fixed</p>
+        <p>Can also use <b>margins</b> to align elements to the left or right with margin-left and margin-right set to auto</p>
+        <p><span class="code">flex-wrap: wrap</span> will allow items to wrap, or go down to multiple lines basically</p>
+        <p>The possibility of multiple rows / columns also allows for the <span class="code">align-content</span> call which allows us to align the rows basically when there are multiple</p>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="scripts.js" type="module"></script> -->
+</head>
+<body class="javascript-notes-body">
+    <h1 class="title">Notes on JavaScript</h1>
+        <button><a href="index.html">Home</a></button>
+    <div class="js-notes-container">
+        <div class="left-col">
+            <h2>Glossary</h2>
+            <ul>
+                <li>Running scripts: <span class="code">&lt;script&gt;&lt;/script&gt;</span> for internal, or <span class="code">&lt;script src="whatever.js"&gt;&lt;/script&gt;</span> for external</li>
+                <li><span class="code">console.log(...)</span></li>
+                <li>Variable declaration: <span class="code">let | const | var</span></li>
+                <li><span class="code">alert()</span></li>
+                <li><span class="code">function f-name() {}</span></li>
+                <li><span class="code">prompt()</span></li>
+                <li><span class="code">document.querySelector("button")</span></li>
+                <li><span class="code">addEventListener()</span></li>
+                <li><span class="code">document.createElement()</span></li>
+                <li><span class="code">document.body.appendChild()</span></li>
+                <li><span class="code">for (type name of list) {...}</span></li>
+                <li><span class="code">for (let i = 1; i &lt;= answer; i++) {...}</span></li>
+                <li><span class="code">typeof //returns type</span></li>
+                <li><span class="code">toFixed() //rounds</span></li>
+                <li><span class="code">Number //or similar, converts type</span></li>
+                <li><span class="code">if (condition) {...}<br>else if (condition) {...}<br>else {}</span></li>
+                <li><span class="code">switch (expression) {<br>&nbsp;case choice1: {... break}<br>&nbsp;case choice2: {... break}<br>&nbsp; default: {...}<br>}</span></li>
+                <li><span class="code">element.querySelector(selector)</span>
+                <li><span class="code">element.querySelectorAll(selectors) //returns nodeList</span></li>
+                <li><span class="code">document.createElement("div")</span></li>
+                <li><span class="code">parentNode.appendChild(childNode)</span></li>
+                <li><span class="code">parentNode.insertNewNode(newNode, referenceNode)</span></li>
+                <li><span class="code">parentNode.removeChild(child)</span></li>
+                <li><span class="code">element.setAttribute("attribute (i.e. "id")", "attributeName") // also get and remove</span></li>
+                <li><span class="code">element.classList.add("class") //also remove and toggle</span></li>
+                <li><span class="code">element.dispatchEvent(event) //triggers event basically</span></li>
+            </ul>
+        </div>
+        <div class="right-col">
+            <h2>Using JavaScript</h2>
+                <p>To use JavaScript, use the script tag: <span class="code">&lt;script&gt; console.log("hello world") &lt;/script&gt;</span></p>
+                <script>
+                    console.log("hello world!")
+                </script>
+                <p>Console.log is like a print command basically, and you can see the console in inspect</p>
+                <p>Can also run scripts by linking a .js file:  <span class="code">&lt;script src="whatever.js"&gt; &lt;/script&gt;</span> </p>
+                <p>Apparently you can also run scripts directly, like declaring a function then putting the function in a button's html, but this is bad practice</p>
+                <p>Generally, we run JavaScript through browser, though it's possible to do it otherwise also</p>
+                <p>Script loading strategies: for internal, place at bottom of body to ensure all html loads. For external, place in header with type="module" so it will allow html to load first. Other strategies too, but generally those will work</p>
+                <p>Comments also exist... pretty standard, // for individual, /* */ for group</p>
+            <h2>Variables</h2>
+                <p>Declare using let or const: let is changeable, const is constant... var also exists but who cares</p>
+                <p>Numbers exist, PEMDAS order of operations</p>
+                <p>Naming is important, make sure to name things well. camelCase is used, variable names can't start with digits, _ and $ are acceptable but - is not, certain words are reserved and can't be variables like let or return, and always name descriptively and consistently</p>
+                <p>Exercises: below this is a script call. Expected outcome in the console, under the first group:<br> 120, 42, 0.24675, 10, 6, 42, 0.7719, 7</p>
+                <script>
+                    console.group("First examples: basic maths")
+                    console.log(23 + 97)
+                    console.log(51 + 6 + 7 - 14 - 8)
+                    console.log((4 + 6 + 9) / 77)
+                    let a = 10
+                    console.log(a)
+                    a -= 4
+                    console.log(a)
+                    let b = a * 7
+                    console.log(b)
+                    const max = 57
+                    const actual = max - 13
+                    const percentage = actual / max
+                    console.log(percentage)
+                    a++
+                    console.log(a)
+                    console.groupEnd("First examples: basic maths")
+                </script>
+            <h2>Data Types</h2>
+                <p>Apparently there are 8 data types</p>
+                <ol>
+                    <li><b>Numbers</b>: numbers... yeah
+                    <ul>
+                        <li>Includes floats and ints, specials like Infinity, -Infinity, and NaN.</li>
+                        <li>All math is safe, even dividing by 0 etc, because at worse it returns NaN</li>
+                        <li>NaN self propogates: any operation on NaN returns NaN, the only exception being NaN ** 0 = 1</li>
+                    </ul> 
+                    <li><b>BigInt</b>: exactly what it sounds like. A big int. Number goes up to +- 2^53 - 1, anything bigger append n to the end to make it BigInt (2423123123213123123213423412341234123412341234n for ex)</li>
+                    <li><b>Strings</b>: words, declared with quotes, simple enough.
+                    <ul>
+                        <li>Apparently ' and " are the same, but ` (backtick) are special, called template literals - basically f-strings, allow you to embed JavaScript</li>
+                        <li>Concatenation exists, with template literals can just womp em together but otherwise +</li>
+                        <li>Use backslash \ to use quotes in strings or something similar</li>
+                        <li>Use template literals to have multiple lines or \n for normal strings</li>
+                        <li>Lots of handy dandy <a href="https://www.w3schools.com/js/js_string_methods.asp">methods</a> to make life easier, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">references</a></li>
+                    </ul>
+                    <li><b>Booleans</b>: True/False, boolean logic applies</li>
+                    <ul>
+                        <li>Comparison operations: ==, !=, &lt;, &gt;, &lt;=, &gt;=</li>
+                        <li>Strings: convert to unicode, so Z &gt; A is true, though a &gt; Z is also true because capitals come before lowercase</li>
+                        <li>Can compare across data types: some conversions implicit, like '01' == 1, also true is 1 and false is 0</li>
+                        <li>Use strict equality, or ===, for better comparisons: '' == false is true, but '' === false is false</li>
+                        <li>Other wonky stuff with null and undefined, doesn't really matter but doesn't hurt to <a href="https://javascript.info/comparison">check it out</a></li>
+                    </ul>
+                    <li><b>null</b>: nothing. Or maybe empty? idk, think empty set, it is nothing but nothing is something, sometimes</li>
+                    <li><b>undefined</b>: empty. Different from null, kinda. Null is generally assigned to something empty, while undefined is reserved for a variable with nothing assigned to it</li>
+                    <li><b>Symbol</b>: unique identifiers for objects</li>
+                    <li><b>Object</b>: more complex data type</li>
+                </ol>
+                <p>There's also the <b>typeof</b> <i>operator</i> - notice operator, not method, which returns the type of piece of data. The exception is null, which is returned as Object, even though it is not an object it's its own type</p>
+            <h2>Conditionals</h2>
+                <p>Basically if else stuff. Pretty standard, you got your ifs, your elses, your else ifs, your nesting, other stuff</p>
+                <p><span class="code">if (condition) {<br>...<br>}<br>else {<br>...<br>}</span></p>
+                <p>Switch statements: basically neater faster nicer way of a bunch of else ifs</p>
+                <p><span class="code">switch (expression) {<br>&nbsp;case choice1: {... break}<br>&nbsp;case choice2: {... break}<br>&nbsp; default: {...}<br>}</span></p>
+                <p>Ternary operator: fancy syntax to take up less space than if else involving ? and :</p>
+                <p><span class="code">condition ? doSomething() : doSomethingElse()<br>//or similarly<br>let x = condition ? value1 : value2</span></p>
+            <h2>Dev Tools</h2>
+                <p>lwk kinda confusing ngl, but basically they're helpful especially for debugging</p>
+                <p>Lots of different break points you can use, also different ways to <a href="https://developer.chrome.com/docs/devtools/console/">utilize the console</a></p>
+                <p>There's pages, elements, console, source, idk lots of stuff I think it will make more sense with practical usage, just remmeber it's a tool that's there ig</p>
+            <h2>Functions!</h2>
+                <p>Functions exist! Take parameters, then are called with arguments</p>
+                <p>Declared with function word, use return to return value</p>
+                <p>Variable scope basics, local variables are only accessible in the function while outer variables are accessible and changeable from within the functions... global variables are bad avoid using them</p>
+                <p>Default values: when being declared, use = to set a default value for a parameter</p>
+                <p>Like variables, name functions well</p>
+                <p>Anonymous functions: like lambda I think, basically instead of naming a function can leave it nameless, or anonymous, either with no name or with => sign</p>
+                <p><span class="code">function (item) {return item * 2} //or item => item * 2</span></p>
+                <p>Callbacks: name for functions entered as parameters</p>
+                <p>Call stack: LIFO stack of function calls, basically last in first out, order of how function calls are evaluated, stack overflow is an error when it exceeds maximum depth</p>
+                <p>Example functions. In the console, under group 2, should see:<br> 17, 6, Abcd, d</p>
+                <script>
+                    console.group("Second examples: basic functions");
+
+                    function add7(num) {
+                        return num + 7;
+                    }
+
+                    function multiply(num1, num2) {
+                        return num1 * num2;
+                    }
+
+                    function capitalize(str) {
+                        return str[0].toUpperCase() + str.slice(1).toLowerCase();
+                    }
+
+                    function lastLetter(str) {
+                        return str.slice(-1);
+                    }
+
+                    console.log(add7(10));
+                    console.log(multiply(2, 3));
+                    console.log(capitalize('aBcD'));
+                    console.log(lastLetter('abcd'));
+
+                    console.groupEnd();
+                </script>
+            <h2>Problem Solving</h2>
+                <p>Super important as a programmer to be able to solve problems, including complex ones. Takes a lot of practice mostly, but also some techniques to help</p>
+                <p><b>Plan</b>: figure out what you are doing and what needs to be done... kinda common sense, one interesting strategy is pseudocode, basically writing out what the code needs to do in English before writing it out for realsies</p>
+                <p>Divide into smaller problems, <b>don't do it all at once</b> (who would ever do that...)</p>
+            <h2>Errors</h2>
+                <p>A few (three) types of errors:</p>
+                <ol>
+                    <li><b>Syntax error:</b> bug in the 'grammer' or syntax of the code</li>
+                    <li><b>Type error:</b> bug in the data type of a variable</li>
+                    <li><b>Reference error:</b> bug when attempting to reference an undefined variable</li>
+                </ol>
+                <p>Errors are super helpful for debugging code</p>
+                <p>Debugger can be helpful for finding and fixing errors</p>
+            <h2>Example project: Rock Paper Scissors</h2>
+                <button id="rochambeau">Play Rock Paper Scissors! Best of three wins.</button>
+                <script src="scripts.js"></script>
+            <h2>Clean Code</h2>
+                <p>Descriptive, consistent, readable</p>
+                <p>Use camelCase for naming variables and functions generally, though not always</p>
+                <p>Use SNAKE_CASE for naming constants, and use constants instead of explicit values when possible</p>
+                <p>Keep line lengths under 80 characters ideally, break up however you want just be consistent</p>
+                <p>Comments should explain useful things that need clarity, not explain every little thing</p>
+            <h2>Loops and Arrays</h2>
+                <p>Loops do stuff iteratively... for loop, for ... of ... loop, while loop, do while loop</p>
+                <p>break: exit loop, continue: go to next iteration of the loop</p>
+                <p>Can label our loops: loopName: for..., then use that to break out of an outer loop from an inner or something similar</p>
+                <p>Arrays: order list of data, declared with []</p>
+                <p>Some array methods:</p>
+                <ul>
+                    <li><b>a.pop()</b> extracts last element of array, or at some index, and returns it</li>
+                    <li><b>a.push(item)</b> adds item to end of array</li>
+                    <li><b>a.shift()</b> extracts the first element of array and returns it</li>
+                    <li><b>a.unshift(item)</b> adds item to beginning of array</li>
+                </ul>
+                <p>a.length is a cool property, returns 1 + highest index, and since js arrays are weird this could actually be different from the 'length' of the array... also can be used to truncate (so a.length = 0 will clear an array)</p>
+                <p>Arrays are objects, so aliasing applies</p>
+                <p>Plenty of other array methods to <a href="https://javascript.info/array-methods">explore</a></p>
+                <script>
+                    console.group("Fourth Examples: practice array function");
+
+                    console.log("Expected: 15, 6, 100, 195");
+
+                    console.log(getMaxSubSum([1, 2, 3, 4, 5, -2, -4, 2]));
+                    console.log(getMaxSubSum([2, -1, 2, 3, -9]));
+                    console.log(getMaxSubSum([100, -9, 2, -3, 5]));
+                    console.log(getMaxSubSum([100, -9, 2, -3, 5, 100]));
+                    
+
+                //SECOND ATTEMPT:
+                    function getMaxSubSum(array) {
+                        //returns the greatest subsum in a non-empty array
+                        let maxRun = array[0];
+                        for (let i = 0; i < array.length; i ++) {
+                            let maxSubRun = array[i];
+                            let curSubRun = array[i];
+                            for (let j = i + 1; j < array.length; j++) {
+                                curSubRun += array[j];
+                                if (curSubRun > maxSubRun) {
+                                    maxSubRun = curSubRun;
+                                }
+                            }
+                            if (maxSubRun > maxRun) {
+                                maxRun = maxSubRun;
+                            }
+                        }
+                        return maxRun;
+                        
+                    }
+                    console.groupEnd("Fourth Examples: practice array function");
+                </script>
+            <h2>DOM Manipulation</h2>
+                <p>DOM: Document Object Model</p>
+                <ul>
+                    <li>Tree of 'nodes' with parent child relationships... i.e. p, div, span etc with classes and ids</li>
+                    <li>Use selectors to find nodes based off ids and classes, then use methods like container.firstElementChild and child.previousElementSibling to use relationships to select</li>
+                    <li>Use methods to access nodes: <span class="code">element.querySelector(selector) //and element.querySelectorAll(selectors)</span></li>
+                    <li>Create elements with <span class="code">document.createElement("div")</span></li>
+                    <li>This just creates elements in memory. To actually add it to the DOM, use <span class="code">parentNode.appendChild(childNode)</span></li>
+                    <li>Can also insert in a specific place or remove nodes</li>
+                    <li>Can directly modify inline properties of a node, but for css it's better to add id's and class tags then edit a styles.css file</li>
+                    <li>Use getAttribute(), setAttribute(), and removeAttribute()</li>
+                    <li>Classes are in a list called classList, which you can .add() to</li>
+                    <li>Can directly modify .textContext</li>
+                </ul>
+                <p>When modifying DOM with javascript, make sure the timing is right. Can't edit stuff before it exists, so put it in the header etc</p>
+                <p>Events: can have events to have dynammic stuff happen</p>
+                <p>Can directly modify, or use addEventListener</p>
+                <p>Events include stuff like click, keys down, mouse etc</p>
+                <p>Can also pass callback functions into event listeners, and use parameter e to pass in event itself</p>
+                <p>Lots of <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">other events </a>to explore</p>
+                <p>Also plenty of other ways to manipulate events: preventDefault() will stop a default behaviour, like clicking on a link, and stopPropagation() will stop any subsequent events activated (for example, let's say you have an event attached to body and to a div under body, the div event will happen first, then the body, uunless you include stopPropagation() then only the div will happen)</p>
+                <p>Also note that it's better to handle events with as few events as possible, making one click event and differentiating based off id instead of making one event for each button you want, for ex</p>
+                <p>Also you can create an event then activate it with dispatchEvent()</p>
+                <p>Also you can create custom events with the CustomEvent() constructor, which takes eventType string and details, which can basically store data</p>
+                <h3>Shopping List practice project</h3>
+                <h3>My shopping list</h1>
+
+                <form>
+                <label for="item">Enter a new item:</label>
+                <input type="text" name="item" id="shopping-item">
+                <button id="shopping-button" class="neutral-element" type="button">Add item</button>
+                </form>
+
+                <ul id="shopping-ul">
+
+                </ul>
+
+                <script>
+                    console.log("hello")
+                    const shopInput = document.querySelector("#shopping-item");
+                    const shopButton = document.querySelector("#shopping-button");
+                    const shopUL = document.querySelector("#shopping-ul");
+
+                    function addItemButton(e) {
+                        e.preventDefault();
+                        const item = shopInput.value;
+                        shopInput.value = "";
+                        const shopLi = document.createElement("li");
+                        const shopSpan = document.createElement("span");
+                        const shopDeleteButton = document.createElement("button");
+                        shopDeleteButton.classList.add("neutral-element");
+                        shopLi.appendChild(shopSpan);
+                        shopLi.appendChild(shopDeleteButton);
+                        shopSpan.textContent = item;
+                        shopDeleteButton.textContent = "Delete";
+                        shopUL.appendChild(shopLi);
+                        shopDeleteButton.addEventListener("click", () => {shopUL.removeChild(shopLi)});
+                        shopLi.focus();
+                    }
+
+                    shopButton.addEventListener("click", addItemButton);
+                    
+
+                </script>
+
+        </div>
+    </div>
+                
+    
+</body>
+</html>
