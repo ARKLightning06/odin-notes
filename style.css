@@ -35,6 +35,16 @@ div.flaming-text {
     -2px -15px 11px #c33;
 }
 
+div.flaming-text#rps-ui-container {
+  border: 5px solid #c33;
+  margin: 10px;
+}
+
+div#rps-ui-scoreboard,
+div#rps-ui-exit {
+  align-self: center;
+}
+
 .neutral-div,
 .neutral-element {
   all: revert;

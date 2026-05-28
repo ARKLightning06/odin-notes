@@ -1,15 +1,12 @@
+// Scripts for the odin-notes file
+// currently just has RPS text and ui versions...
+// note that these could be significantly cleaned up using classes as a future project
+
 if (document.body.classList.contains("javascript-notes-body")) {
     const rochambeauButtonText = document.querySelector("#rochambeau-v1");
     const rochambeauButtonUI = document.querySelector("#rochambeau-v2");
     rochambeauButtonText.addEventListener("click", playRPSGameText);
     rochambeauButtonUI.addEventListener("click", playRPSGameUI)
-}
-
-function setButtonDisabled(isActive) {
-    const rochambeauButtonText = document.querySelector("#rochambeau-v1");
-    const rochambeauButtonUI = document.querySelector("#rochambeau-v2");
-    rochambeauButtonText.disabled = isActive;
-    rochambeauButtonUI.disabled = isActive;
 }
 
 function resetUI() {
@@ -18,16 +15,18 @@ function resetUI() {
     const uiPlayerSide = document.querySelector("#rps-ui-playerside");
     const uiMiddleSide = document.querySelector("#rps-ui-middleside");
     const uiComputerSide = document.querySelector("#rps-ui-computerside");
+    const uiExit = document.querySelector("#rps-ui-exit");
     uiPlayerSide.replaceChildren();
     uiMiddleSide.replaceChildren();
     uiComputerSide.replaceChildren();
     uiScoreboard.textContent = "";
     uiRPSContainer.classList.remove("flaming-text");
+    uiExit.textContent = "";
 }
 
 
 function playRPSGameText() {
-    setButtonDisabled(true);
+    resetUI();
     let playerScore = 0;
     let computerScore = 0;
     alert("Let's player rock paper scissors! First to three wins.");
@@ -55,7 +54,6 @@ function playRPSGameText() {
     else {
         alert(`Oh no! You lost! Final score: \nYou: ${playerScore}, Computer: ${computerScore} \nAI IS TAKING OVER THE WOOOOORLD!!!`);
     }
-    setButtonDisabled(false);
 }
 
 function playRPSRoundText() {
@@ -78,8 +76,8 @@ function playRPSRoundText() {
 }
 
 function playRPSGameUI() {
-    //deactivate button to avoid calling same function
-    setButtonDisabled(true);
+    //reset any previous UI
+    resetUI();
 
     //set score variables
     let playerScore = 0;
@@ -104,7 +102,7 @@ function playRPSGameUI() {
     const playerRPSIcons = [playerRockIcon, playerPaperIcon, playerScissorsIcon];
     const comRPSIcons = [comRockIcon, comPaperIcon, comScissorsIcon];
     const rpsImages = ["./images/rock.jpg", "./images/paper.png", "./images/scissors.jpg"];
-    const rpsIDs = ["#player-rock", "#player-paper", "#player-scissors", "#com-rock", "#com-paper", "#com-scissors"];
+    const rpsIDs = ["player-rock", "player-paper", "player-scissors", "com-rock", "com-paper", "com-scissors"];
 
     //stylize
     uiScoreboard.textContent = "Welcome to ROCK PAPER SCISSORS!";
@@ -117,11 +115,13 @@ function playRPSGameUI() {
     comLabel.textContent = "Computer";
     scoreOfPlayer.textContent = playerScore;
     scoreOfCom.textContent = computerScore;
+    scoreOfPlayer.setAttribute("id", "score-of-player");
+    scoreOfCom.setAttribute("id", "score-of-com");
     uiPlayerSide.appendChild(playerLabel);
     uiComputerSide.append(comLabel);
     uiPlayerSide.appendChild(scoreOfPlayer);
     uiComputerSide.append(scoreOfCom);
-    for (i = 0; i < playerRPSIcons.length; i++) {
+    for (let i = 0; i < playerRPSIcons.length; i++) {
         let playerIcon = playerRPSIcons[i];
         let comIcon = comRPSIcons[i]
         let source = rpsImages[i];
@@ -137,10 +137,68 @@ function playRPSGameUI() {
         playerIcon.width = 100;
         comIcon.height = 100;
         comIcon.width = 100;
+        playerIcon.addEventListener("click", () => playRPSRoundUI(i));
         uiPlayerSide.appendChild(playerIcon);
         uiComputerSide.appendChild(comIcon);
     }
     uiMiddleSide.textContent = "VS.";
-    setButtonDisabled(false);
-    
+    uiExit = document.querySelector("#rps-ui-exit");
+    uiExit.textContent = "EXIT";
+    uiExit.addEventListener("click", resetUI);
+}
+
+function playRPSRoundUI(input) {
+    let comChoice = Math.floor(Math.random() * 3);
+    const choiceButtons = [
+        document.querySelector("#player-rock"),
+        document.querySelector("#player-paper"),
+        document.querySelector("#player-scissors"),
+        document.querySelector("#com-rock"),
+        document.querySelector("#com-paper"),
+        document.querySelector("#com-scissors")
+    ]
+    let playerButton = choiceButtons[input];
+    let comButton = choiceButtons[input + 3];
+    let scoreOfPlayer = document.querySelector("#score-of-player");
+    let scoreOfCom = document.querySelector("#score-of-com");
+    let uiScoreboard = document.querySelector("#rps-ui-scoreboard");
+
+    for (b of choiceButtons) {
+        b.classList.remove("selected-button-winner");
+        b.classList.remove("selected-button-loser");
+        b.classList.add("unselected-button");
+    }
+
+    switch (true) {
+        case comChoice == input: {
+            //tie
+            playerButton.classList.remove("unselected-button");
+            playerButton.classList.add("selected-button-loser");
+            comButton.classList.remove("unselected-button");
+            comButton.classList.add("selected-button-loser");
+            uiScoreboard.textContent = "Tie!";
+            break;
+        }
+        case (comChoice == ((input + 1) % 3)): {
+            //com win
+            playerButton.classList.remove("unselected-button");
+            playerButton.classList.add("selected-button-loser");
+            comButton.classList.remove("unselected-button");
+            comButton.classList.add("selected-button-winner");
+            scoreOfCom.textContent = Number(scoreOfCom.textContent) + 1;
+            uiScoreboard.textContent = "Computer Wins!";
+            break;
+        }
+        default: {
+            //player win
+            playerButton.classList.remove("unselected-button");
+            playerButton.classList.add("selected-button-winner");
+            comButton.classList.remove("unselected-button");
+            comButton.classList.add("selected-button-loser");
+            scoreOfPlayer.textContent = Number(scoreOfPlayer.textContent) + 1;
+            uiScoreboard.textContent = "Player Wins!";
+            break;
+        }
+
+    }
 }
