@@ -2,11 +2,93 @@
 // currently just has RPS text and ui versions...
 // note that these could be significantly cleaned up using classes as a future project
 
+class SketchCell {
+    //class containing a single cell in a SketchGrid
+    constructor(row, col, color, rowContainer) {
+        this.row = row;
+        this.col = col;
+        this.color = color;
+        this.rowContainer = rowContainer;
+        this.cell = this.createDiv();
+        this.cell.addEventListener("mouseenter", this.changeColor.bind(this));
+    }
+
+    createDiv() {
+        const cell = document.createElement("div");
+        cell.classList.add("sketch-cell");
+        this.rowContainer.appendChild(cell);
+        return cell;
+    }
+
+    changeColor() {
+        console.log(this.cell);
+        this.cell.style.background = this.color;
+        console.log("bye");
+
+    }
+}
+
+class SketchGrid {
+    constructor(container, size, color, isErase) {
+        this.container = container;
+        this.size = size;
+        this.color = color;
+        this.isErase = isErase;
+        this.grid = this.drawGrid();
+    }
+
+    resetContainer() {
+        this.container.replaceChildren();
+    }
+
+    setSize(newSize) {
+        this.size = newSize;
+    }
+
+    setColor(newColor) {
+        this.color = newColor;
+    }
+
+    setErase(isErasing) {
+        this.isErase = isErasing;
+    }
+
+    drawGrid() {
+        //draw and return an n x n grid where n is this.size
+        this.resetContainer;
+        let grid = [];
+        for (let r = 0; r < this.size; r++) {
+            grid.push([]);
+            let sketchRow = document.createElement("div");
+            sketchRow.classList.add("sketch-row");
+            for (let c = 0; c < this.size; c++) {
+                let cell = new SketchCell(r, c, this.color, sketchRow);
+                grid[r].push(cell);
+            }
+            this.container.appendChild(sketchRow);
+        }
+        return grid;
+    }
+
+    redrawGrid(newSize) {
+        this.setSize(newSize);
+        this.grid = drawGrid();
+    }
+
+    
+}
+
+
+
 if (document.body.classList.contains("javascript-notes-body")) {
     const rochambeauButtonText = document.querySelector("#rochambeau-v1");
     const rochambeauButtonUI = document.querySelector("#rochambeau-v2");
     rochambeauButtonText.addEventListener("click", playRPSGameText);
     rochambeauButtonUI.addEventListener("click", playRPSGameUI)
+}
+else if (document.body.classList.contains("sketch-body")) {
+    const container = document.querySelector("#sketch-container");
+    const sketchGrid = new SketchGrid(container, 16, "#05060A", false);
 }
 
 function resetUI() {

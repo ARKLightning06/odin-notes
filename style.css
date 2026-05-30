@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 body {
   background: #FFEE8C;
@@ -136,8 +137,86 @@ div#rps-ui-exit {
   flex: 3;
 }
 
+.sketch-body {
+  background: #05060A;
+  padding: 20px;
+}
+
+.sketch-frame {
+  background: #1B1F3B;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sketch-title {
+  background: #A9B3D6;
+  border: 5px solid #2F3C7E;
+  margin: 20px;
+  padding: 20px;
+  color: #1B1F3B;
+  font-family: "Orbitron", sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  flex-basis: 80px;
+}
+
+.sketch-settings-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.sketch-settings {
+  font-size: 24px;
+  align-self: center;
+  flex-basis: 40px;
+}
+
+.sketch-grid {
+  background: #A9B3D6;
+  border: 5px solid #2F3C7E;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.sketch-container {
+  display: flex;
+  flex-direction: column;
+  width: min(90%, min(95vw, 95vh));
+  height: min(95vw, 95vh);
+  aspect-ratio: 1/1;
+
+}
+
+.sketch-row {
+  all: revert;
+  flex: 1, 1, auto;
+  display: flex;
+  margin: 0, auto;
+  min-width: 0;
+  min-height: 0;
+  /* align-self: center; */
+}
+
+.sketch-cell {
+  all: revert;
+  background: #EDEEF2;
+  flex: 1;
+  border: 1px solid #A9B3D6;
+  box-sizing: border-box;
+  /* max-height: 100%;
+  max-width: 100/16%; */
+  aspect-ratio: 1 / 1;
+}
+
 #flex-body {
   display: flex;
   flex-wrap: wrap;
 }
+
 
