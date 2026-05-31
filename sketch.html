@@ -12,23 +12,32 @@
         <div class="sketch-title neutral-element">
             Sketch-o-Etch
             <div class="neutral-element flex-element-vertical">
-                <div class="neutral-element sketch-settings">Settings</div>
                 <div class="neutral-element sketch-settings-container">
+                    <div class="neutral-element sketch-settings">Settings:</div>
                     <div class="neutral-element sketch-settings">
                         Size
                         <select id="sketch-settings-size">
+                            <option value="1">1</option>
+                            <option value="4">4</option>
                             <option value="8">8</option>
-                            <option value="16">16</option>
+                            <option value="16" selected>16</option>
+                            <option value="32">32</option>
                             <option value="64">64</option>
-                            <option value="256">256</option>
+                            <option value="128">128</option>
                         </select>
 
                     </div>
                     <div class="neutral-element sketch-settings">
                         Color
+                        <input id="sketch-settings-color" type="color" value="#05060A">
                     </div>
                     <div class="neutral-element sketch-settings">
                         Erase
+                        <input id="sketch-settings-erase" type="checkbox">
+                    </div>
+                    <div class="neutral-element sketch-settings">
+                        Darken
+                        <input id="sketch-settings-darken" type="checkbox">
                     </div>
                 </div>
             </div>

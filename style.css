@@ -167,12 +167,14 @@ div#rps-ui-exit {
   display: flex;
   gap: 40px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .sketch-settings {
   font-size: 24px;
   align-self: center;
   flex-basis: 40px;
+  margin: 10px;
 }
 
 .sketch-grid {
@@ -190,6 +192,7 @@ div#rps-ui-exit {
   width: min(90%, min(95vw, 95vh));
   height: min(95vw, 95vh);
   aspect-ratio: 1/1;
+  background: #EDEEF2;
 
 }
 

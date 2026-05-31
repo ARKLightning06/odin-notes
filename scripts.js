@@ -4,13 +4,16 @@
 
 class SketchCell {
     //class containing a single cell in a SketchGrid
-    constructor(row, col, color, rowContainer) {
+    constructor(row, col, color, rowContainer, sketchGrid) {
         this.row = row;
         this.col = col;
         this.color = color;
         this.rowContainer = rowContainer;
         this.cell = this.createDiv();
         this.cell.addEventListener("mouseenter", this.changeColor.bind(this));
+        this.cell.addEventListener("mouseenter", this.adjustDarken.bind(this));
+        this.sketchGrid = sketchGrid;
+        this.darkenVal = 1;
     }
 
     createDiv() {
@@ -20,11 +23,24 @@ class SketchCell {
         return cell;
     }
 
-    changeColor() {
-        console.log(this.cell);
-        this.cell.style.background = this.color;
-        console.log("bye");
+    setColor(newColor) {
+        this.color = newColor;
+    }
 
+    changeColor() {
+        this.cell.style.background = this.color;
+        this.adjustDarken();
+    }
+
+    adjustDarken() {
+        if (!this.sketchGrid.getIsErase()) {
+            this.darkenVal = Math.min(this.darkenVal + 0.05, 1);
+            this.cell.style.opacity = this.darkenVal;
+        }
+    }
+
+    setDarken(newDark) {
+        this.darkenVal = newDark;
     }
 }
 
@@ -35,6 +51,7 @@ class SketchGrid {
         this.color = color;
         this.isErase = isErase;
         this.grid = this.drawGrid();
+        this.isDarken = false;
     }
 
     resetContainer() {
@@ -47,22 +64,61 @@ class SketchGrid {
 
     setColor(newColor) {
         this.color = newColor;
+        if (!this.isErase) {
+            for (let r = 0; r < this.size; r++) {
+                for (let c = 0; c < this.size; c++) {
+                    this.grid[r][c].setColor(newColor);
+                }
+            }
+        }
     }
 
     setErase(isErasing) {
-        this.isErase = isErasing;
+        if (isErasing) {
+            let tempColor = this.color;
+            this.setColor("#EDEEF2");
+            this.isErase = isErasing;
+            this.color = tempColor;
+        }
+        else {
+            this.isErase = isErasing;
+            this.setColor(this.color);
+        }
+        //this seemingly weird piece of code will reset all darkenvalues sittings somewhere between 0.5 and 1
+        this.setDarken(!this.isDarken);
+        this.setDarken(!this.isDarken);
+    }
+
+    setDarken(isDarken) {
+        this.isDarken = isDarken;
+        for (let r = 0; r < this.size; r++) {
+            for (let c = 0; c < this.size; c++) {
+                let newDark = isDarken ? 0.5 : 1;
+
+                //slightly flawed as it resets any previously set darken values, oh well
+                this.grid[r][c].setDarken(newDark);
+            }
+        }
+    }
+
+    getIsErase() {
+        return this.isErase;
+    }
+
+    getIsDarken() {
+        return this.isDarken;
     }
 
     drawGrid() {
         //draw and return an n x n grid where n is this.size
-        this.resetContainer;
+        this.resetContainer();
         let grid = [];
         for (let r = 0; r < this.size; r++) {
             grid.push([]);
             let sketchRow = document.createElement("div");
             sketchRow.classList.add("sketch-row");
             for (let c = 0; c < this.size; c++) {
-                let cell = new SketchCell(r, c, this.color, sketchRow);
+                let cell = new SketchCell(r, c, this.color, sketchRow, this);
                 grid[r].push(cell);
             }
             this.container.appendChild(sketchRow);
@@ -72,7 +128,7 @@ class SketchGrid {
 
     redrawGrid(newSize) {
         this.setSize(newSize);
-        this.grid = drawGrid();
+        this.grid = this.drawGrid();
     }
 
     
@@ -89,6 +145,14 @@ if (document.body.classList.contains("javascript-notes-body")) {
 else if (document.body.classList.contains("sketch-body")) {
     const container = document.querySelector("#sketch-container");
     const sketchGrid = new SketchGrid(container, 16, "#05060A", false);
+    const sizeSelector = document.querySelector("#sketch-settings-size");
+    sizeSelector.addEventListener("change", (event) => sketchGrid.redrawGrid(Number(event.target.value)));
+    const colorSelector = document.querySelector("#sketch-settings-color");
+    colorSelector.addEventListener("change", (event) => sketchGrid.setColor(event.target.value));
+    const eraseSelector = document.querySelector("#sketch-settings-erase");
+    eraseSelector.addEventListener("change", (event) => sketchGrid.setErase(event.target.checked));
+    const darkenSelector = document.querySelector("#sketch-settings-darken");
+    darkenSelector.addEventListener("change", (event) => sketchGrid.setDarken(event.target.checked));
 }
 
 function resetUI() {
