@@ -32,6 +32,20 @@ class SketchCell {
         this.adjustDarken();
     }
 
+    setDarken(newDark) {
+        this.darkenVal = newDark;
+    }
+
+    setBorders(isBordered) {
+        if (isBordered) {
+            this.cell.style.border = "1px solid #A9B3D6";
+        }
+        else {
+            this.cell.style.border = "none";
+        }
+    }
+
+
     adjustDarken() {
         if (!this.sketchGrid.getIsErase()) {
             this.darkenVal = Math.min(this.darkenVal + 0.05, 1);
@@ -39,19 +53,17 @@ class SketchCell {
         }
     }
 
-    setDarken(newDark) {
-        this.darkenVal = newDark;
-    }
 }
 
 class SketchGrid {
-    constructor(container, size, color, isErase) {
+    constructor(container, size, color) {
         this.container = container;
         this.size = size;
         this.color = color;
-        this.isErase = isErase;
+        this.isErase = false;
         this.grid = this.drawGrid();
         this.isDarken = false;
+        this.isBordered = false;
     }
 
     resetContainer() {
@@ -101,6 +113,15 @@ class SketchGrid {
         }
     }
 
+    setBorders(isBordered) {
+        this.isBordered = isBordered;
+        for (let r = 0; r < this.size; r++) {
+            for (let c = 0; c < this.size; c++) {
+                this.grid[r][c].setBorders(isBordered);
+            }
+        }
+    }
+
     getIsErase() {
         return this.isErase;
     }
@@ -144,7 +165,7 @@ if (document.body.classList.contains("javascript-notes-body")) {
 }
 else if (document.body.classList.contains("sketch-body")) {
     const container = document.querySelector("#sketch-container");
-    const sketchGrid = new SketchGrid(container, 16, "#05060A", false);
+    const sketchGrid = new SketchGrid(container, 16, "#05060A");
     const sizeSelector = document.querySelector("#sketch-settings-size");
     sizeSelector.addEventListener("change", (event) => sketchGrid.redrawGrid(Number(event.target.value)));
     const colorSelector = document.querySelector("#sketch-settings-color");
@@ -153,6 +174,8 @@ else if (document.body.classList.contains("sketch-body")) {
     eraseSelector.addEventListener("change", (event) => sketchGrid.setErase(event.target.checked));
     const darkenSelector = document.querySelector("#sketch-settings-darken");
     darkenSelector.addEventListener("change", (event) => sketchGrid.setDarken(event.target.checked));
+    const borderSelector = document.querySelector("#sketch-settings-border");
+    borderSelector.addEventListener("change", (event) => sketchGrid.setBorders(event.target.checked));
 }
 
 function resetUI() {
