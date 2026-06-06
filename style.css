@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Germania+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 
 
 body {
@@ -251,6 +252,9 @@ div#rps-ui-exit {
   height: 400px;
   margin-top: -80px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .calc-top {
@@ -265,6 +269,7 @@ div#rps-ui-exit {
   align-items: flex-end;
   background: #8C8D82;
   flex-direction: column;
+  text-align: center;
 }
 
 .calc-hat {
@@ -330,6 +335,11 @@ div#rps-ui-exit {
   corner-shape: bevel;
 }
 
+.calc-wrath {
+  font-family: "Creepster", sans-serif;
+  color: red;
+}
+
 #flex-body {
   display: flex;
   flex-wrap: wrap;
@@ -339,11 +349,7 @@ div#rps-ui-exit {
   font-size: 16px;
 }
 
-#calc-top-top {
-  
-}
-
 #calc-top-bottom {
-  font-size: 20px;
+  font-size: 16px;
 }
 

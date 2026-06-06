@@ -161,44 +161,68 @@ class OdinCalculator {
         this.outputTop = outputTop;
         this.outputBottom = outputBottom;
         this.leftNum = 0;
+        this.leftStr = "";
         this.operatorIndex = -1;
-        this.rightNum = NaN;
+        this.rightNum = undefined;
+        this.rightStr = undefined;
         this.operators = ["+", "-", "\u00D7", "\u00F7"];
         this.isOldNum = false; //to handle when leftNum is set to result of an operation
+        this.wrath = 0; // to track the wrath of the gods
     }
 
     inputNum(num) {
+        this.resetWrathEffects();
         if (this.isOldNum) {
             this.isOldNum = false;
             this.leftNum = 0;
+            this.leftStr = "";
         }
-        if (this.operatorIndex == -1 && (this.leftNum >= -999999999 && this.leftNum <= 999999999)) {
-            this.leftNum = this.leftNum * 10 + num;
+        if (this.operatorIndex == -1 && (this.leftStr.length < 10 || num == "Backspace")) {
+            this.adjustLeftNum(num.toString());
         }
-        else if (this.rightNum >= -999999999 && this.rightNum <= 999999999) {
-            this.rightNum = this.rightNum * 10 + num;
+        else if (this.rightStr.length < 10 || num == "Backspace") {
+            this.adjustRightNum(num.toString());
         }
         this.updateOutput();
     }
 
-    // adjustNum(leftOrRight, num) {
-    //     if (typeof num === "number") {
-    //         leftOrRight =
-    //     }
-    // }
+    adjustLeftNum(digit) {
+        if (digit == "Backspace") {
+            this.leftStr = this.leftStr.slice(0, this.leftStr.length - 1);
+            this.leftNum = +this.leftStr;
+        }
+        else if (!(this.leftStr.includes(".") && digit == ".")) {
+            this.leftStr += digit;
+            this.leftNum = +this.leftStr;
+        }        
+    }
+
+    adjustRightNum(digit) {
+        if (digit == "Backspace") {
+            this.rightStr = this.rightStr.slice(0, this.rightStr.length - 1);
+            this.rightNum = +this.rightStr;
+        }
+        else if (!(this.rightStr.includes(".") && digit == ".")) {
+            this.rightStr += digit;
+            this.rightNum = +this.rightStr;
+        }        
+    }
 
     inputOperator(operatorIndex) {
+        this.resetWrathEffects();
         this.isOldNum = false;
-        if (this.rightNum || this.rightNum == 0) {
+        if (typeof this.rightStr !== "undefined" && this.rightStr != "") {
             this.evaluate(false);
         }
         this.operatorIndex = operatorIndex;
         this.updateOutput();
         this.rightNum = 0;
+        this.rightStr = "";
     }
 
     evaluate(isNewEquation=true) {
-        if (this.rightNum || this.rightNum == 0) {
+        this.resetWrathEffects();
+        if (typeof this.rightStr !== "undefined" && this.rightStr != "") {
             let result = 'ERROR';
             switch (this.operatorIndex) {
                 case (0): {
@@ -214,6 +238,11 @@ class OdinCalculator {
                     break;
                 }
                 case (3): {
+                    if (this.rightNum === 0) {
+                        console.log(this.rightNum);
+                        this.incurWrath();
+                        return;
+                    }
                     result = this.leftNum / this.rightNum;
                     break;
                 }
@@ -223,19 +252,27 @@ class OdinCalculator {
             }
             this.updateOutput(true, result);
             this.operatorIndex = -1;
-            this.rightNum = NaN;
+            this.rightNum = undefined;
+            this.rightStr = undefined;
             this.leftNum = result;
+            this.leftStr = result.toString();
             this.isOldNum = isNewEquation;
+        }
+        else {
+            this.clear();
         }
     }
 
     updateOutput(isEvaluated, evaluated = 0) {
-        if ((this.rightNum || this.rightNum == 0) && isEvaluated) {
+        if ((typeof this.rightStr !== "undefined") && this.rightStr != "" && isEvaluated) {
             this.outputTop.textContent = this.parseNum(evaluated);
             this.outputBottom.textContent = `${this.parseNum(this.leftNum)} ${this.operators[this.operatorIndex]} ${this.parseNum(this.rightNum)} =`;
         }
-        else if (this.rightNum || this.rightNum == 0) {
+        else if (typeof this.rightStr !== "undefined" && this.rightStr != "") {
             this.outputTop.textContent = this.parseNum(this.rightNum);
+            if (this.rightStr.includes(".")) {
+                this.outputTop.textContent = this.rightStr;
+            }
             this.outputBottom.textContent = '';
         }
         else if (this.operatorIndex != -1) {
@@ -244,21 +281,98 @@ class OdinCalculator {
         }
         else {
             this.outputTop.textContent = this.parseNum(this.leftNum);
+            if (this.leftStr.includes(".")) {
+                this.outputTop.textContent = this.leftStr;
+            }
+
             this.outputBottom.textContent = '';
         }
     }
 
     parseNum(num) {
-        return Math.abs(num) >= 1000000 || Math.abs(num < 0.0000001) ? num.toExponential(1) : +num.toFixed(4);
+        return Math.abs(num) >= 1000000 || (Math.abs(num) < 0.0000001 && num != 0) ? num.toExponential(1) : +num.toFixed(4);
     }
 
     clear() {
+        this.resetWrathEffects();
         this.outputTop.textContent = 0;
         this.outputBottom.textContent = '';
         this.leftNum = 0;
+        this.leftStr = "";
         this.operatorIndex = -1;
-        this.rightNum = NaN;
+        this.rightNum = undefined;
+        this.rightStr = undefined;
         this.isOldNum = false;
+    }
+
+    incurWrath() {
+        switch (this.wrath) {
+            case(0): {
+                this.clear();
+                this.outputTop.style.alignSelf = "center";
+                this.outputTop.classList.add("calc-wrath");
+                this.outputTop.textContent = "Foolish mortal";
+                this.outputBottom.textContent = "Meddle not in that which you do not understand";
+                break;
+            }
+            case(1): {
+                this.clear();
+                this.outputTop.style.alignSelf = "center";
+                this.outputTop.classList.add("calc-wrath");
+                this.outputBottom.classList.add("calc-wrath");
+                this.outputTop.textContent = "You Dare?";
+                this.outputBottom.textContent = "Your insolence is dangerous, pathetic dog";
+                break;
+            }
+            case(2): {
+                this.clear();
+                this.outputTop.style.alignSelf = "center";
+                this.outputTop.classList.add("calc-wrath");
+                this.outputBottom.classList.add("calc-wrath");
+                document.querySelector("#calc-box").style.border = "5px solid #ff0000";
+                this.outputTop.textContent = "Vile Wretch!";
+                this.outputBottom.textContent = "This is your last warning, or you shall burn forever in the fires of Helheim!";
+                break;
+            }
+            case(3): {
+                this.clear();
+                this.outputTop.style.alignSelf = "center";
+                this.outputTop.classList.add("calc-wrath");
+                this.outputBottom.classList.add("calc-wrath");
+                document.querySelector("#calc-box").style.border = "5px solid #ff0000";
+                document.querySelector("#calc-frame").style.border = "7px solid #ff0000";
+                document.querySelector("#calc-title").style.color = "#ff0000";
+                this.outputTop.textContent = "";
+                this.outputBottom.textContent = "For this offense, you are sentenced the Blood Eagle. Your back shall be slashed open, ribs severed, and lungs unfurled as you wallow in agony, vile scum.";
+                break;
+            }
+            case(4): {
+                this.clear();
+                this.outputTop.style.alignSelf = "center";
+                this.outputTop.classList.add("calc-wrath");
+                this.outputBottom.classList.add("calc-wrath");
+                document.querySelector("#calc-box").style.border = "5px solid #ff0000";
+                document.querySelector("#calc-frame").style.border = "7px solid #ff0000";
+                document.querySelector("#calc-title").style.color = "#ff0000";
+                this.outputTop.textContent = "Níðingr";
+                this.outputBottom.textContent = "Words cannot describe your lowliness. Only the gods can give you the torment you deserve.";
+                break;
+            }
+            default: {
+                window.location.href="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            }
+        }
+        this.wrath += 1;
+    }
+
+    resetWrathEffects() {
+        this.outputTop.classList.remove("calc-wrath");
+        this.outputBottom.classList.remove("calc-wrath");
+        this.outputTop.style.alignSelf = "flex-end";
+        document.querySelector("#calc-box").style.border = "5px solid #0E0E0E";
+        document.querySelector("#calc-frame").style.border = "5px double #5E4638";
+        document.querySelector("#calc-title").style.color = "#5E4638";
+
     }
 
     
@@ -288,9 +402,32 @@ else if (document.body.classList.contains("sketch-body")) {
 }
 
 else if (document.body.classList.contains("odin-calculator-body")) {
+    // find elements to manipulate
     const calcContainerTop = document.querySelector("#calc-top-top");
     const calcContainerBottom = document.querySelector("#calc-top-bottom");
+
+    // initiate class to store data
     const odinCalc = new OdinCalculator(calcContainerTop, calcContainerBottom);
+
+    // set up keybinds
+    const validKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Backspace", "."];
+    const validKeyOperations = ["+", "-", "*", "/"];
+    document.addEventListener("keydown", (event) => {
+        if (validKeys.includes(event.key)) {
+            odinCalc.inputNum(event.key.toString());
+        }
+        else if (validKeyOperations.includes(event.key)) {
+            odinCalc.inputOperator(validKeyOperations.indexOf(event.key));
+        }
+        else if (event.key === "=" || event.key === "Enter") {
+            odinCalc.evaluate();
+        }
+        else if (event.key === "c") {
+            odinCalc.clear();
+        }
+    });
+
+    // set up buttons
     const calcNumbers = [...document.querySelectorAll(".calc-number")];
     for (let i = 0; i < calcNumbers.length; i++) {
         let num = (i + 1) % 10;
@@ -304,6 +441,10 @@ else if (document.body.classList.contains("odin-calculator-body")) {
     calcEquals.addEventListener("click", () => odinCalc.evaluate());
     const calcClear = document.querySelector("#calc-clear");
     calcClear.addEventListener("click", () => odinCalc.clear());
+    const calcBackspace = document.querySelector("#calc-backspace"); 
+    calcBackspace.addEventListener("click", () => odinCalc.inputNum("backspace"));
+    const calcDecimal = document.querySelector("#calc-decimal");
+    calcDecimal.addEventListener("click", () => odinCalc.inputNum("."));
 }
 
 function resetUI() {
