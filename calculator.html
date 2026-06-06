@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="scripts.js" type="module"></script> -->
+</head>
+<body class="odin-calculator-body">
+    <div class="neutral-element calc-frame">
+        <div class="neutral-element calc-title">Odin Calculator</div>
+        <div class="neutral-element"><a href="javascript-notes.html">Home</a></div>
+        <img src="./images/viking-hat.png" alt="Decorative image of a viking hat" width="320px" height="auto" class="calc-hat">
+        <div class="neutral-element calc-box">
+            <div class="calc-top neutral-element">
+                <span id="calc-top-top">1</span>
+                <span id="calc-top-bottom">6767</span>
+            </div>
+            <div class="calc-keypad neutral-element">
+                <div class="neutral-element calc-row">
+                    <button class="calc-button-rectangle calc-button" id="calc-clear">C</button>
+                    <button class="calc-button-orange" id="calc-backspace">&#9003;</button>
+                    <button class="calc-button-orange calc-operator" id="calc-plus">+</button>
+                </div>
+                <div class="neutral-element calc-row">
+                    <button class="calc-button calc-number" id="calc-one">1</button>
+                    <button class="calc-button calc-number" id="calc-two">2</button>
+                    <button class="calc-button calc-number" id="calc-three">3</button>
+                    <button class="calc-button-orange calc-operator" id="calc-minus">-</button>
+                </div>
+                <div class="neutral-element calc-row">
+                    <button class="calc-button calc-number" id="calc-four">4</button>
+                    <button class="calc-button calc-number" id="calc-five">5</button>
+                    <button class="calc-button calc-number" id="calc-six">6</button>
+                    <button class="calc-button-orange calc-operator" id="calc-times">&times;</button>
+                </div>
+                <div class="neutral-element calc-row">
+                    <button class="calc-button calc-number" id="calc-seven">7</button>
+                    <button class="calc-button calc-number" id="calc-eight">8</button>
+                    <button class="calc-button calc-number" id="calc-nine">9</button>
+                    <button class="calc-button-orange calc-operator" id="calc-divide">&divide;</button>
+                </div>
+                <div class="neutral-element calc-row">
+                    <button class="calc-button calc-number" id="calc-zero">0</button>
+                    <button class="calc-button" id="calc-decimal">.</button>
+                    <button class="calc-button-orange calc-button-rectangle" id="calc-equals">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>

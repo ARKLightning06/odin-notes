@@ -302,9 +302,31 @@
 
                     shopButton.addEventListener("click", addItemButton);
                 </script>
+            <h2>Objects</h2>
+                <p>Objects are a collection of key value pairs</p>
+                <ul>
+                    <li>let name = new Object() initializes an empty object</li>
+                    <li>let name = {username: "ARKLightning", age: 19} initializes an object with specified key-value pairs</li>
+                    <li>name.age returns 19 (or whatever is stored)</li>
+                    <li>name.isStudent = true creates a new value pair</li>
+                    <li>delete name.username deletes the specified value</li>
+                    <li>can have multi word values, like "likes birds" but must be in square brackets: ["likes birds"]</li>
+                    <li>can also use square brackets for computed values (like let fruit = prompst(...), let object = {[fruit]: 5, ...})</li>
+                    <li>in keyword checks if a value is in an object, returns boolean</li>
+                    <li>can use for (let x in object) for loop on objects</li>
+                    <li>objects can have properties and methods. properties are stored values, methods are stored functions</li>
+                    <li>can initialize methods similar to properties, like sayHello: function () {console.log("hello world!")}, or you can use shorthand, which is just function sayHello () {...}</li>
+                    <li>object literal: object using this comma separated key value pairs in {}</li>
+                    <li>objects can be properties of objects, then the dot notations would be object1.object2.property2</li>
+                    <li>usually use dot notation (object.property) but can also use square bracket notation (object["property"])</li>
+                    <li>constructors are the name of the object with a capital letter, and are called by the new keyword, easier to initialize values</li>
+                </ul>
+                <p>Objects feel like a mix between dictionaries and classes... presumably classes are subclasses of objects, or something like that? not sure yet...</p>
+                
             <h2>Projects</h2>
                 <p>Learn by doing!</p>
                 <p>Project One: <a href="sketch.html">Sketch-o-Etch</a></p>
+                <p>Project Two: <a href="calculator.html">Odin Calculator</a></p>
         </div>
     </div>
                 

@@ -151,6 +151,97 @@ class SketchGrid {
         this.setSize(newSize);
         this.grid = this.drawGrid();
     }
+}
+
+// Odin Calculator Project
+
+class OdinCalculator {
+    //class to contain input and output for the calculator, as well as the methods
+    constructor(outputTop, outputBottom) {
+        this.outputTop = outputTop;
+        this.outputBottom = outputBottom;
+        this.leftNum = 0;
+        this.operatorIndex = -1;
+        this.rightNum = NaN;
+        this.operators = ["+", "-", "\u00D7", "\u00F7"];
+        this.isOldNum = false; //to handle when leftNum is set to result of an operation
+    }
+
+    inputNum(num) {
+        if (this.isOldNum) {
+            this.isOldNum = false;
+            this.leftNum = 0;
+        }
+        if (this.operatorIndex == -1 && (this.leftNum >= -999999999 && this.leftNum <= 999999999)) {
+            this.leftNum = this.leftNum * 10 + num;
+        }
+        else if (this.rightNum >= -999999999 && this.rightNum <= 999999999) {
+            this.rightNum = this.rightNum * 10 + num;
+        }
+        this.updateOutput();
+    }
+
+    inputOperator(operatorIndex) {
+        this.isOldNum = false;
+        if (this.rightNum || this.rightNum == 0) {
+            this.evaluate(false);
+        }
+        this.operatorIndex = operatorIndex;
+        this.updateOutput();
+        this.rightNum = 0;
+    }
+
+    evaluate(isNewEquation=true) {
+        if (this.rightNum || this.rightNum == 0) {
+            let result = 'ERROR';
+            switch (this.operatorIndex) {
+                case (0): {
+                    result = this.leftNum + this.rightNum;
+                    break;
+                }
+                case (1): {
+                    result = this.leftNum - this.rightNum;
+                    break;
+                }
+                case (2): {
+                    result = this.leftNum * this.rightNum;
+                    break;
+                }
+                case (3): {
+                    result = this.leftNum / this.rightNum;
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+            this.updateOutput(true, result);
+            this.operatorIndex = -1;
+            this.rightNum = NaN;
+            this.leftNum = result;
+            this.isOldNum = isNewEquation;
+        }
+    }
+
+    updateOutput(isEvaluated, evaluated = 0) {
+        if ((this.rightNum || this.rightNum == 0) && isEvaluated) {
+            this.outputTop.textContent = evaluated;
+            this.outputBottom.textContent = `${this.leftNum} ${this.operators[this.operatorIndex]} ${this.rightNum} =`;
+        }
+        else if (this.rightNum || this.rightNum == 0) {
+            this.outputTop.textContent = this.rightNum;
+            this.outputBottom.textContent = '';
+        }
+        else if (this.operatorIndex != -1) {
+            this.outputTop.textContent = this.operators[this.operatorIndex];
+            this.outputBottom.textContent = '';
+        }
+        else {
+            this.outputTop.textContent = this.leftNum;
+            this.outputBottom.textContent = '';
+            console.log(this.outputBottom);
+        }
+    }
 
     
 }
@@ -176,6 +267,23 @@ else if (document.body.classList.contains("sketch-body")) {
     darkenSelector.addEventListener("change", (event) => sketchGrid.setDarken(event.target.checked));
     const borderSelector = document.querySelector("#sketch-settings-border");
     borderSelector.addEventListener("change", (event) => sketchGrid.setBorders(event.target.checked));
+}
+
+else if (document.body.classList.contains("odin-calculator-body")) {
+    const calcContainerTop = document.querySelector("#calc-top-top");
+    const calcContainerBottom = document.querySelector("#calc-top-bottom");
+    const odinCalc = new OdinCalculator(calcContainerTop, calcContainerBottom);
+    const calcNumbers = [...document.querySelectorAll(".calc-number")];
+    for (let i = 0; i < calcNumbers.length; i++) {
+        let num = (i + 1) % 10;
+        calcNumbers[i].addEventListener("click", () => odinCalc.inputNum(num));
+    }
+    const calcOperations = [...document.querySelectorAll('.calc-operator')];
+    for (let i = 0; i < calcOperations.length; i++) {
+        calcOperations[i].addEventListener("click", () => odinCalc.inputOperator(i));
+    }
+    const calcEquals = document.querySelector("#calc-equals");
+    calcEquals.addEventListener("click", () => odinCalc.evaluate());
 }
 
 function resetUI() {

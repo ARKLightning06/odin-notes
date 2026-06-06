@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Germania+One&display=swap');
+
 
 body {
   background: #FFEE8C;
@@ -217,9 +219,131 @@ div#rps-ui-exit {
   aspect-ratio: 1 / 1;
 }
 
+.odin-calculator-body {
+  background: #0E0E0E;
+  padding: 30px;
+  font-family: "Germania One", sans-serif;
+  font-size: 36px;
+}
+
+.calc-frame {
+  margin: 30px;
+  padding: 30px;
+  border: 5px double #5E4638;
+  border-radius: 20px;
+  background: #8C8D82;
+  color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calc-title {
+  font-size: 60px;
+  color: #5E4638;
+}
+
+.calc-box {
+  border: 5px solid #0E0E0E;
+  border-radius: 20px;
+  background: #5E4638;
+  width: 250px;
+  height: 400px;
+  margin-top: -80px;
+  padding: 10px;
+}
+
+.calc-top {
+  border: #0E0E0E 3px solid;
+  margin: 10px;
+  height: 80px;
+  width: 225px;
+  border-radius: 20px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: #8C8D82;
+  flex-direction: column;
+}
+
+.calc-hat {
+  z-index: 1;
+  width: 320px;
+  height: auto;
+}
+
+.calc-keypad {
+  border: #0E0E0E 3px solid;
+  margin: 10px;
+  height: 240px;
+  width: 225px;
+  border-radius: 20px;
+  background: #8C8D82;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: center;
+  /* gap: 5px; */
+  align-items: center;
+}
+
+.calc-button {
+  border: none;
+  border-radius: 20px;
+  corner-shape: bevel;
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  background: #0E0E0E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F2F2F2;
+  font-family: "Germania One", sans-serif;
+
+}
+
+.calc-button-orange {
+  border: none;
+  border-radius: 20px;
+  corner-shape: bevel;
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  background: #B85C38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F2F2F2;
+  font-family: "Germania One", sans-serif;
+}
+
+.calc-button-rectangle {
+  width: 88px;
+  height: 40px;
+  border-radius: 20px;
+  corner-shape: bevel;
+}
+
 #flex-body {
   display: flex;
   flex-wrap: wrap;
 }
 
+#calc-backspace {
+  font-size: 16px;
+}
+
+#calc-top-top {
+  
+}
+
+#calc-top-bottom {
+  font-size: 20px;
+}
 
