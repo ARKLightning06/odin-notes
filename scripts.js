@@ -181,6 +181,12 @@ class OdinCalculator {
         this.updateOutput();
     }
 
+    // adjustNum(leftOrRight, num) {
+    //     if (typeof num === "number") {
+    //         leftOrRight =
+    //     }
+    // }
+
     inputOperator(operatorIndex) {
         this.isOldNum = false;
         if (this.rightNum || this.rightNum == 0) {
@@ -225,11 +231,11 @@ class OdinCalculator {
 
     updateOutput(isEvaluated, evaluated = 0) {
         if ((this.rightNum || this.rightNum == 0) && isEvaluated) {
-            this.outputTop.textContent = evaluated;
-            this.outputBottom.textContent = `${this.leftNum} ${this.operators[this.operatorIndex]} ${this.rightNum} =`;
+            this.outputTop.textContent = this.parseNum(evaluated);
+            this.outputBottom.textContent = `${this.parseNum(this.leftNum)} ${this.operators[this.operatorIndex]} ${this.parseNum(this.rightNum)} =`;
         }
         else if (this.rightNum || this.rightNum == 0) {
-            this.outputTop.textContent = this.rightNum;
+            this.outputTop.textContent = this.parseNum(this.rightNum);
             this.outputBottom.textContent = '';
         }
         else if (this.operatorIndex != -1) {
@@ -237,10 +243,22 @@ class OdinCalculator {
             this.outputBottom.textContent = '';
         }
         else {
-            this.outputTop.textContent = this.leftNum;
+            this.outputTop.textContent = this.parseNum(this.leftNum);
             this.outputBottom.textContent = '';
-            console.log(this.outputBottom);
         }
+    }
+
+    parseNum(num) {
+        return Math.abs(num) >= 1000000 || Math.abs(num < 0.0000001) ? num.toExponential(1) : +num.toFixed(4);
+    }
+
+    clear() {
+        this.outputTop.textContent = 0;
+        this.outputBottom.textContent = '';
+        this.leftNum = 0;
+        this.operatorIndex = -1;
+        this.rightNum = NaN;
+        this.isOldNum = false;
     }
 
     
@@ -284,6 +302,8 @@ else if (document.body.classList.contains("odin-calculator-body")) {
     }
     const calcEquals = document.querySelector("#calc-equals");
     calcEquals.addEventListener("click", () => odinCalc.evaluate());
+    const calcClear = document.querySelector("#calc-clear");
+    calcClear.addEventListener("click", () => odinCalc.clear());
 }
 
 function resetUI() {
