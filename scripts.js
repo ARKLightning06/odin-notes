@@ -596,7 +596,7 @@ function playRPSRoundUI(input) {
         document.querySelector("#com-scissors")
     ]
     let playerButton = choiceButtons[input];
-    let comButton = choiceButtons[input + 3];
+    let comButton = choiceButtons[comChoice + 3];
     let scoreOfPlayer = document.querySelector("#score-of-player");
     let scoreOfCom = document.querySelector("#score-of-com");
     let uiScoreboard = document.querySelector("#rps-ui-scoreboard");

@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- <script src="scripts.js" type="module"></script> -->
 </head>
-<body class="javascript-notes-body">
-    <h1 class="title">Notes on JavaScript</h1>
+<body class="javascript-notes-body" id="javascript-notes-body">
+    <div class="title"><h1>Notes on JavaScript</h1></div>
         <button><a href="index.html">Home</a></button>
     <div class="js-notes-container">
         <div class="left-col">
@@ -265,7 +265,7 @@
                 <p>Also you can create an event then activate it with dispatchEvent()</p>
                 <p>Also you can create custom events with the CustomEvent() constructor, which takes eventType string and details, which can basically store data</p>
                 <h3>Shopping List practice project</h3>
-                <h3>My shopping list</h1>
+                <h3>My shopping list</h3>
 
                 <form>
                 <label for="item">Enter a new item:</label>
@@ -302,6 +302,36 @@
 
                     shopButton.addEventListener("click", addItemButton);
                 </script>
+
+                <h3>Color Selector Project</h3>
+                    <p>Choose a nicer color palette!</p>
+                    <ul>
+                        <li>Outer Background: <input id="outer-background-color" type="color" value="#FFEE8C"></li>
+                        <li>Border: <input id="border-color" type="color" value="#eee"></li>
+                        <li>Inner Background: <input id="inner-background-color" type="color" value="#008800"></li>
+                    </ul>
+                
+                <script>
+                    const outerBackgroundSelector = document.querySelector("#outer-background-color");
+                    const borderSelector = document.querySelector("#border-color");
+                    const innerBackgroundColor = document.querySelector("#inner-background-color");
+                    const divs = document.querySelectorAll("div:not(.js-notes-container)");
+                    outerBackgroundSelector.addEventListener("change", (event) => {
+                        document.querySelector("#javascript-notes-body").style.setProperty("background", event.target.value);
+                    });
+                    borderSelector.addEventListener("change", (event) => {
+                        for (d of divs) {
+                            d.style.setProperty("border-color", event.target.value);
+                        }
+                    });
+                    innerBackgroundColor.addEventListener("change", (event) => {
+                        for (d of divs) {
+                            d.style.setProperty("background", event.target.value);
+                        }
+                    });
+
+                </script>
+
             <h2>Objects</h2>
                 <p>Objects are a collection of key value pairs</p>
                 <ul>

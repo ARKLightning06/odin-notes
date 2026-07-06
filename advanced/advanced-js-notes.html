@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JS Notes</title>
+    <link rel="stylesheet" href="advanced-styles.css">
+    <!-- <script src="scripts.js" type="module"></script> -->
+</head>
+<body class="javascript-notes-body">
+    <h1 class="title">Notes on Advanced JS</h1>
+        <button><a href="../index.html">Home</a></button>
+
+    <h2>SVG</h2>
+        <p><b>SVG:</b> Scalable Vector Graphics</p>
+        <p>They're great, very scalable so you can zoom in and out pretty much infinitely without loosing resolution, but not great for complex image types</p>
+        <p>Goes directly into html under the &lt;svg&gt; tag, with several properties:</p>
+        <table>
+            <colgroup>
+                <col class="col-first">
+            </colgroup>
+            <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Example Use</th>
+            </tr>
+            <tr>
+                <th><code>xmnls</code></th>
+                <td>'XML NameSpace,'' specifies dialect</td>
+                <td>Used to make svgs not fall apart, also render some borders</td>
+            </tr>
+            <tr>
+                <th><code>viewBox</code></th>
+                <td>Defines bounds of SVG, plus aspect ratio, plus origin</td>
+                <td>Used for determining what to show of the SVG</td>
+            </tr>
+            <tr>
+                <th><code>class, id</code></th>
+                <td>Allows targeting of elements with css or js</td>
+                <td>Used for css styling and javascript manipulating</td>
+            </tr>
+            <tr>
+                <th>Other</th>
+                <td>There're <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element">a lot</a> of other elements to work with</td>
+                <td>Use elements like circle, path, rect, text to shape the SVG (self explanatory, circle makes circle, path draws a path between points, etc)</td>
+            </tr>
+        </table>
+        <p>For embedding SVGs, can link it or embed it in inline directly... linking is cleaner, but inline has more potential</p>
+        <p>Example inline SVG:</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x="0" y="0" width="10" hieght="10" fill="red"></rect>
+        </svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x=0 y=0 width=100 height=50 />
+  <circle class="svg-circle" cx="50" cy="50" r="10"/>
+</svg>
+
+
+
+</body>
