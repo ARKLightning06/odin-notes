@@ -47,15 +47,214 @@
         </table>
         <p>For embedding SVGs, can link it or embed it in inline directly... linking is cleaner, but inline has more potential</p>
         <p>Example inline SVG:</p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <rect x="0" y="0" width="10" hieght="10" fill="red"></rect>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="100px">
+            <rect x="0" y="0" width="20" height="20" fill="blue"></rect>
+            <circle cx="10" cy="10" r="9.5" fill="yellow"></circle>
+            <circle cx="6" cy="6" r="2"></circle>
+            <circle cx="14" cy="6" r="2"></circle>
+            <circle cx="10" cy="13" r="5"></circle>
+            <circle cx="10" cy="12" r="5" fill="yellow"></circle>
         </svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect x=0 y=0 width=100 height=50 />
-  <circle class="svg-circle" cx="50" cy="50" r="10"/>
-</svg>
+    <h2>Tables</h2>
+        <p>Tables are exactly what they sound like</p>
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>th</td>
+                <td>table head cell</td>
+            </tr>
+            <tr>
+                <td>tr</td>
+                <td>table row</td>
+            </tr>
+            <tr>
+                <td>td</td>
+                <td>table data</td>
+            </tr>
+            <tr>
+                <td>tf</td>
+                <td>table foot cell</td>
+            </tr>
+            <tr>
+                <td>thead</td>
+                <td>table header</td>
+            </tr>
+            <tr>
+                <td>tbody</td>
+                <td>table body</td>
+            </tr>
 
+            <tr>
+                <td>tfooter</td>
+                <td>table footer</td>
+            </tr>
+            <tr>
+                <td>colgroup</td>
+                <td>groups columns</td>
+            </tr>
+            <tr>
+                <td>col</td>
+                <td>part of colgroup</td>
+            </tr>
+            <tr>
+                <td>rowspan</td>
+                <td>how many rows a cell spans</td>
+            </tr>
+            <tr>
+                <td>colspan</td>
+                <td>how many columns a cell spans</td>
+            </tr>
+        </table>
+        <h3>Example table: Planetary Data</h3>
+            <p><em>not gonna worry about styling... for now</em></p>
+            <table>
+                <caption>Data about the planets of our solar system (Planetary facts taken from <a href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/">Nasa's Planetary Fact Sheet - Metric</a>).</caption>
+                <colgroup>
+                    <col span="2">
+                    <col class="column-border">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="2">&nbsp;</th>
+                        <th>Name</th>
+                        <th>Mass<br>(10^24kg)</th>
+                        <th>Diameter<br>(km)</th>
+                        <th>Density<br>(kg/m^3)</th>
+                        <th>Gravity<br>(m/s^2)</th>
+                        <th>Length of Day<br>(hours)</th>
+                        <th>Distance from Sun<br>(10^6km)</th>
+                        <th>Mean temperature<br>(&deg;C)</th>
+                        <th>Number of moons</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" rowspan="4">Terrestrial Planets</td>
+                        <td>Mercury</td>
+                        <td>0.330</td>
+                        <td>4,879</td>
+                        <td>5427</td>
+                        <td>3.7</td>
+                        <td>4222.6</td>
+                        <td>57.9</td>
+                        <td>167</td>
+                        <td>0</td>
+                        <td>Closest to the Sun</td>
 
+                    </tr>
+                    <tr>
+                        <td>Venus</td>
+                        <td>4.87</td>
+                        <td>12,104</td>
+                        <td>5243</td>
+                        <td>8.9</td>
+                        <td>2802.0</td>
+                        <td>108.2</td>
+                        <td>464</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+
+                    </tr>
+                    <tr>
+                        <td>Earth</td>
+                        <td>5.97</td>
+                        <td>12,756</td>
+                        <td>5514</td>
+                        <td>9.8</td>
+                        <td>24.0</td>
+                        <td>149.6</td>
+                        <td>15</td>
+                        <td>1</td>
+                        <td>Our world</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mars</td>
+                        <td>0.642</td>
+                        <td>6,792</td>
+                        <td>3933</td>
+                        <td>3.7</td>
+                        <td>24.7</td>
+                        <td>227.9</td>
+                        <td>-65</td>
+                        <td>2</td>
+                        <td>The red planet</td>
+
+                    </tr>
+                    <tr>
+                        <td rowspan="4">Jovian planets</td>
+                        <td rowspan="2">Gas giants</td>
+                        <td>Jupiter</td>
+                        <td>1898</td>
+                        <td>142,984</td>
+                        <td>1326</td>
+                        <td>23.1</td>
+                        <td>9.9</td>
+                        <td>778.6</td>
+                        <td>-110</td>
+                        <td>67</td>
+                        <td>The largest planet</td>
+
+                    </tr>
+                    <tr>
+                        <td>Saturn</td>
+                        <td>568</td>
+                        <td>120,536</td>
+                        <td>687</td>
+                        <td>9.0</td>
+                        <td>10.7</td>
+                        <td>1433.5</td>
+                        <td>-140</td>
+                        <td>62</td>
+                        <td>&nbsp;</td>
+
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Ice giants</td>
+                        <td>Uranus</td>
+                        <td>86.8</td>
+                        <td>51,118</td>
+                        <td>1271</td>
+                        <td>8.7</td>
+                        <td>17.2</td>
+                        <td>2872.5</td>
+                        <td>-195</td>
+                        <td>27</td>
+                        <td>&nbsp;</td>
+
+                    </tr>
+                    <tr>
+                        <td>Neptune</td>
+                        <td>102</td>
+                        <td>49,528</td>
+                        <td>1638</td>
+                        <td>11.0</td>
+                        <td>16.1</td>
+                        <td>4495.1</td>
+                        <td>-200</td>
+                        <td>14</td>
+                        <td>&nbsp;</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2">Dwarf planets</td>
+                        <td>Pluto</td>
+                        <td>0.0146</td>
+                        <td>2,370</td>
+                        <td>2095</td>
+                        <td>0.7</td>
+                        <td>153.3</td>
+                        <td>5906.4</td>
+                        <td>-225</td>
+                        <td>5</td>
+                        <td>Declassified as a planet in 2006, but this <a href="http://www.usatoday.com/story/tech/2014/10/02/pluto-planet-solar-system/16578959/">remains controversial</a>.</td>
+
+                    </tr>
+                </tbody>
+            </table>
 
 </body>
