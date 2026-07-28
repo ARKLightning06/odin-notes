@@ -11,250 +11,462 @@
     <h1 class="title">Notes on Advanced JS</h1>
         <button><a href="../index.html">Home</a></button>
 
-    <h2>SVG</h2>
-        <p><b>SVG:</b> Scalable Vector Graphics</p>
-        <p>They're great, very scalable so you can zoom in and out pretty much infinitely without loosing resolution, but not great for complex image types</p>
-        <p>Goes directly into html under the &lt;svg&gt; tag, with several properties:</p>
-        <table>
-            <colgroup>
-                <col class="col-first">
-            </colgroup>
-            <tr>
-                <th>Property</th>
-                <th>Description</th>
-                <th>Example Use</th>
-            </tr>
-            <tr>
-                <th><code>xmnls</code></th>
-                <td>'XML NameSpace,'' specifies dialect</td>
-                <td>Used to make svgs not fall apart, also render some borders</td>
-            </tr>
-            <tr>
-                <th><code>viewBox</code></th>
-                <td>Defines bounds of SVG, plus aspect ratio, plus origin</td>
-                <td>Used for determining what to show of the SVG</td>
-            </tr>
-            <tr>
-                <th><code>class, id</code></th>
-                <td>Allows targeting of elements with css or js</td>
-                <td>Used for css styling and javascript manipulating</td>
-            </tr>
-            <tr>
-                <th>Other</th>
-                <td>There're <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element">a lot</a> of other elements to work with</td>
-                <td>Use elements like circle, path, rect, text to shape the SVG (self explanatory, circle makes circle, path draws a path between points, etc)</td>
-            </tr>
-        </table>
-        <p>For embedding SVGs, can link it or embed it in inline directly... linking is cleaner, but inline has more potential</p>
-        <p>Example inline SVG:</p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="100px">
-            <rect x="0" y="0" width="20" height="20" fill="blue"></rect>
-            <circle cx="10" cy="10" r="9.5" fill="yellow"></circle>
-            <circle cx="6" cy="6" r="2"></circle>
-            <circle cx="14" cy="6" r="2"></circle>
-            <circle cx="10" cy="13" r="5"></circle>
-            <circle cx="10" cy="12" r="5" fill="yellow"></circle>
-        </svg>
-    <h2>Tables</h2>
-        <p>Tables are exactly what they sound like</p>
-        <table>
-            <tr>
-                <th>Element</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>th</td>
-                <td>table head cell</td>
-            </tr>
-            <tr>
-                <td>tr</td>
-                <td>table row</td>
-            </tr>
-            <tr>
-                <td>td</td>
-                <td>table data</td>
-            </tr>
-            <tr>
-                <td>tf</td>
-                <td>table foot cell</td>
-            </tr>
-            <tr>
-                <td>thead</td>
-                <td>table header</td>
-            </tr>
-            <tr>
-                <td>tbody</td>
-                <td>table body</td>
-            </tr>
+    <!-- kinda messed this up... advanced should be a bigger section, 
+    then within that Intermediate HTML and CSS, and within that 
+    intermediate HTML Concepts, Intermediate CSS Concepts, 
+    Forms, and Grid... 
+    whoops, will reformat after getting the info down probably -->
 
-            <tr>
-                <td>tfooter</td>
-                <td>table footer</td>
-            </tr>
-            <tr>
-                <td>colgroup</td>
-                <td>groups columns</td>
-            </tr>
-            <tr>
-                <td>col</td>
-                <td>part of colgroup</td>
-            </tr>
-            <tr>
-                <td>rowspan</td>
-                <td>how many rows a cell spans</td>
-            </tr>
-            <tr>
-                <td>colspan</td>
-                <td>how many columns a cell spans</td>
-            </tr>
-        </table>
-        <h3>Example table: Planetary Data</h3>
-            <p><em>not gonna worry about styling... for now</em></p>
+    <!-- Intermediate HTML Concepts -->
+
+    <h1>Intermediate HTML Concepts</h1>
+        <h2>SVG</h2>
+            <p><b>SVG:</b> Scalable Vector Graphics</p>
+            <p>They're great, very scalable so you can zoom in and out pretty much infinitely without loosing resolution, but not great for complex image types</p>
+            <p>Goes directly into html under the &lt;svg&gt; tag, with several properties:</p>
             <table>
-                <caption>Data about the planets of our solar system (Planetary facts taken from <a href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/">Nasa's Planetary Fact Sheet - Metric</a>).</caption>
                 <colgroup>
-                    <col span="2">
-                    <col class="column-border">
+                    <col class="col-first">
                 </colgroup>
-                <thead>
-                    <tr>
-                        <th colspan="2">&nbsp;</th>
-                        <th>Name</th>
-                        <th>Mass<br>(10^24kg)</th>
-                        <th>Diameter<br>(km)</th>
-                        <th>Density<br>(kg/m^3)</th>
-                        <th>Gravity<br>(m/s^2)</th>
-                        <th>Length of Day<br>(hours)</th>
-                        <th>Distance from Sun<br>(10^6km)</th>
-                        <th>Mean temperature<br>(&deg;C)</th>
-                        <th>Number of moons</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="2" rowspan="4">Terrestrial Planets</td>
-                        <td>Mercury</td>
-                        <td>0.330</td>
-                        <td>4,879</td>
-                        <td>5427</td>
-                        <td>3.7</td>
-                        <td>4222.6</td>
-                        <td>57.9</td>
-                        <td>167</td>
-                        <td>0</td>
-                        <td>Closest to the Sun</td>
-
-                    </tr>
-                    <tr>
-                        <td>Venus</td>
-                        <td>4.87</td>
-                        <td>12,104</td>
-                        <td>5243</td>
-                        <td>8.9</td>
-                        <td>2802.0</td>
-                        <td>108.2</td>
-                        <td>464</td>
-                        <td>0</td>
-                        <td>&nbsp;</td>
-
-                    </tr>
-                    <tr>
-                        <td>Earth</td>
-                        <td>5.97</td>
-                        <td>12,756</td>
-                        <td>5514</td>
-                        <td>9.8</td>
-                        <td>24.0</td>
-                        <td>149.6</td>
-                        <td>15</td>
-                        <td>1</td>
-                        <td>Our world</td>
-
-                    </tr>
-                    <tr>
-                        <td>Mars</td>
-                        <td>0.642</td>
-                        <td>6,792</td>
-                        <td>3933</td>
-                        <td>3.7</td>
-                        <td>24.7</td>
-                        <td>227.9</td>
-                        <td>-65</td>
-                        <td>2</td>
-                        <td>The red planet</td>
-
-                    </tr>
-                    <tr>
-                        <td rowspan="4">Jovian planets</td>
-                        <td rowspan="2">Gas giants</td>
-                        <td>Jupiter</td>
-                        <td>1898</td>
-                        <td>142,984</td>
-                        <td>1326</td>
-                        <td>23.1</td>
-                        <td>9.9</td>
-                        <td>778.6</td>
-                        <td>-110</td>
-                        <td>67</td>
-                        <td>The largest planet</td>
-
-                    </tr>
-                    <tr>
-                        <td>Saturn</td>
-                        <td>568</td>
-                        <td>120,536</td>
-                        <td>687</td>
-                        <td>9.0</td>
-                        <td>10.7</td>
-                        <td>1433.5</td>
-                        <td>-140</td>
-                        <td>62</td>
-                        <td>&nbsp;</td>
-
-                    </tr>
-                    <tr>
-                        <td rowspan="2">Ice giants</td>
-                        <td>Uranus</td>
-                        <td>86.8</td>
-                        <td>51,118</td>
-                        <td>1271</td>
-                        <td>8.7</td>
-                        <td>17.2</td>
-                        <td>2872.5</td>
-                        <td>-195</td>
-                        <td>27</td>
-                        <td>&nbsp;</td>
-
-                    </tr>
-                    <tr>
-                        <td>Neptune</td>
-                        <td>102</td>
-                        <td>49,528</td>
-                        <td>1638</td>
-                        <td>11.0</td>
-                        <td>16.1</td>
-                        <td>4495.1</td>
-                        <td>-200</td>
-                        <td>14</td>
-                        <td>&nbsp;</td>
-
-                    </tr>
-                    <tr>
-                        <td colspan="2">Dwarf planets</td>
-                        <td>Pluto</td>
-                        <td>0.0146</td>
-                        <td>2,370</td>
-                        <td>2095</td>
-                        <td>0.7</td>
-                        <td>153.3</td>
-                        <td>5906.4</td>
-                        <td>-225</td>
-                        <td>5</td>
-                        <td>Declassified as a planet in 2006, but this <a href="http://www.usatoday.com/story/tech/2014/10/02/pluto-planet-solar-system/16578959/">remains controversial</a>.</td>
-
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Use</th>
+                </tr>
+                <tr>
+                    <th><code>xmnls</code></th>
+                    <td>'XML NameSpace,'' specifies dialect</td>
+                    <td>Used to make svgs not fall apart, also render some borders</td>
+                </tr>
+                <tr>
+                    <th><code>viewBox</code></th>
+                    <td>Defines bounds of SVG, plus aspect ratio, plus origin</td>
+                    <td>Used for determining what to show of the SVG</td>
+                </tr>
+                <tr>
+                    <th><code>class, id</code></th>
+                    <td>Allows targeting of elements with css or js</td>
+                    <td>Used for css styling and javascript manipulating</td>
+                </tr>
+                <tr>
+                    <th>Other</th>
+                    <td>There're <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element">a lot</a> of other elements to work with</td>
+                    <td>Use elements like circle, path, rect, text to shape the SVG (self explanatory, circle makes circle, path draws a path between points, etc)</td>
+                </tr>
             </table>
+            <p>For embedding SVGs, can link it or embed it in inline directly... linking is cleaner, but inline has more potential</p>
+            <p>Example inline SVG:</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="100px">
+                <rect x="0" y="0" width="20" height="20" fill="blue"></rect>
+                <circle cx="10" cy="10" r="9.5" fill="yellow"></circle>
+                <circle cx="6" cy="6" r="2"></circle>
+                <circle cx="14" cy="6" r="2"></circle>
+                <circle cx="10" cy="13" r="5"></circle>
+                <circle cx="10" cy="12" r="5" fill="yellow"></circle>
+            </svg>
+        <h2>Tables</h2>
+            <p>Tables are exactly what they sound like</p>
+            <table>
+                <tr>
+                    <th>Element</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>th</td>
+                    <td>table head cell</td>
+                </tr>
+                <tr>
+                    <td>tr</td>
+                    <td>table row</td>
+                </tr>
+                <tr>
+                    <td>td</td>
+                    <td>table data</td>
+                </tr>
+                <tr>
+                    <td>tf</td>
+                    <td>table foot cell</td>
+                </tr>
+                <tr>
+                    <td>thead</td>
+                    <td>table header</td>
+                </tr>
+                <tr>
+                    <td>tbody</td>
+                    <td>table body</td>
+                </tr>
 
+                <tr>
+                    <td>tfooter</td>
+                    <td>table footer</td>
+                </tr>
+                <tr>
+                    <td>colgroup</td>
+                    <td>groups columns</td>
+                </tr>
+                <tr>
+                    <td>col</td>
+                    <td>part of colgroup</td>
+                </tr>
+                <tr>
+                    <td>rowspan</td>
+                    <td>how many rows a cell spans</td>
+                </tr>
+                <tr>
+                    <td>colspan</td>
+                    <td>how many columns a cell spans</td>
+                </tr>
+            </table>
+            <h3>Example table: Planetary Data</h3>
+                <p><em>not gonna worry about styling... for now</em></p>
+                <table>
+                    <caption>Data about the planets of our solar system (Planetary facts taken from <a href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/">Nasa's Planetary Fact Sheet - Metric</a>).</caption>
+                    <colgroup>
+                        <col span="2">
+                        <col class="column-border">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th colspan="2">&nbsp;</th>
+                            <th>Name</th>
+                            <th>Mass<br>(10^24kg)</th>
+                            <th>Diameter<br>(km)</th>
+                            <th>Density<br>(kg/m^3)</th>
+                            <th>Gravity<br>(m/s^2)</th>
+                            <th>Length of Day<br>(hours)</th>
+                            <th>Distance from Sun<br>(10^6km)</th>
+                            <th>Mean temperature<br>(&deg;C)</th>
+                            <th>Number of moons</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2" rowspan="4">Terrestrial Planets</td>
+                            <td>Mercury</td>
+                            <td>0.330</td>
+                            <td>4,879</td>
+                            <td>5427</td>
+                            <td>3.7</td>
+                            <td>4222.6</td>
+                            <td>57.9</td>
+                            <td>167</td>
+                            <td>0</td>
+                            <td>Closest to the Sun</td>
+
+                        </tr>
+                        <tr>
+                            <td>Venus</td>
+                            <td>4.87</td>
+                            <td>12,104</td>
+                            <td>5243</td>
+                            <td>8.9</td>
+                            <td>2802.0</td>
+                            <td>108.2</td>
+                            <td>464</td>
+                            <td>0</td>
+                            <td>&nbsp;</td>
+
+                        </tr>
+                        <tr>
+                            <td>Earth</td>
+                            <td>5.97</td>
+                            <td>12,756</td>
+                            <td>5514</td>
+                            <td>9.8</td>
+                            <td>24.0</td>
+                            <td>149.6</td>
+                            <td>15</td>
+                            <td>1</td>
+                            <td>Our world</td>
+
+                        </tr>
+                        <tr>
+                            <td>Mars</td>
+                            <td>0.642</td>
+                            <td>6,792</td>
+                            <td>3933</td>
+                            <td>3.7</td>
+                            <td>24.7</td>
+                            <td>227.9</td>
+                            <td>-65</td>
+                            <td>2</td>
+                            <td>The red planet</td>
+
+                        </tr>
+                        <tr>
+                            <td rowspan="4">Jovian planets</td>
+                            <td rowspan="2">Gas giants</td>
+                            <td>Jupiter</td>
+                            <td>1898</td>
+                            <td>142,984</td>
+                            <td>1326</td>
+                            <td>23.1</td>
+                            <td>9.9</td>
+                            <td>778.6</td>
+                            <td>-110</td>
+                            <td>67</td>
+                            <td>The largest planet</td>
+
+                        </tr>
+                        <tr>
+                            <td>Saturn</td>
+                            <td>568</td>
+                            <td>120,536</td>
+                            <td>687</td>
+                            <td>9.0</td>
+                            <td>10.7</td>
+                            <td>1433.5</td>
+                            <td>-140</td>
+                            <td>62</td>
+                            <td>&nbsp;</td>
+
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Ice giants</td>
+                            <td>Uranus</td>
+                            <td>86.8</td>
+                            <td>51,118</td>
+                            <td>1271</td>
+                            <td>8.7</td>
+                            <td>17.2</td>
+                            <td>2872.5</td>
+                            <td>-195</td>
+                            <td>27</td>
+                            <td>&nbsp;</td>
+
+                        </tr>
+                        <tr>
+                            <td>Neptune</td>
+                            <td>102</td>
+                            <td>49,528</td>
+                            <td>1638</td>
+                            <td>11.0</td>
+                            <td>16.1</td>
+                            <td>4495.1</td>
+                            <td>-200</td>
+                            <td>14</td>
+                            <td>&nbsp;</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2">Dwarf planets</td>
+                            <td>Pluto</td>
+                            <td>0.0146</td>
+                            <td>2,370</td>
+                            <td>2095</td>
+                            <td>0.7</td>
+                            <td>153.3</td>
+                            <td>5906.4</td>
+                            <td>-225</td>
+                            <td>5</td>
+                            <td>Declassified as a planet in 2006, but this <a href="http://www.usatoday.com/story/tech/2014/10/02/pluto-planet-solar-system/16578959/">remains controversial</a>.</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+    <h1>Intermediate CSS Concepts</h1>
+        <h2>Default Styles</h2>
+            <p>Default styles exist, but some people don't like them. There are reset sheets which basically reset defaults, they're optional and some devs like them some don't</p>
+            <p>Normalizers try to embrace the defaults and normalize them across browsers, while resets nuke them away completely to build everything from scratch. Hybrid is a mix of both</p>
+        <h2>CSS Units</h2>
+            <p>There are many different unit types for css</p>
+            <table>
+                <thead>
+                    <th>Unit Category</th>
+                    <th>Unit css name</th>
+                    <th>Unit Description</th>
+                </thead>
+                <tr>
+                    <th rowspan="3">Absolute Units</th>
+                    <td>px</td>
+                    <td>pixels: pixel size doesn't change</td>
+                </tr>
+                <tr>
+                    <td>in</td>
+                    <td>inches - don't use this</td>
+                </tr>
+                <tr>
+                    <td>cm</td>
+                    <td>centimeters - don't use this</td>
+                </tr>
+                <tr>
+                    <th rowspan="4">Relative Units</th>
+                    <td>em</td>
+                    <td>font size of an element - 4 em of a 16px font element would be 64px - better to use rem</td>
+                </tr>
+                <tr>
+                    <td>rem</td>
+                    <td>font size of the root element (html/:root) - better to use then em</td>
+                </tr>
+                <tr>
+                    <td>vh</td>
+                    <td>viewport height - 1vh is 1% of the viewport height</td>
+                </tr>
+                <tr>
+                    <td>vw</td>
+                    <td>viewport width - 1vw is 1% of the viewport width</td>
+                </tr>
+            </table>
+        <h2>Text Styles</h2>
+            <p>Font Families exist, you can import libraries or fonts with import statements and links and even self hosting, but it's still good to have backups</p>
+            <p>Other text styling includes text-style (like emphasis or italics), letter spacing, line height, text transform (upper/lowercase), text shadow, and ellipsis</p>
+            <p>Font face is important for using your own fonts as far as I can tell, or like when you download something but not from certain CDNs... I think? A little unclear... but use WOFF2</p>
+        <h2>More Properties</h2>
+            <p>Border is actually shorthand for 8 different properties, including color, background image, positioning of background image</p>
+            <p>There's also box-shadow, overflow, and opacity</p>
+        <h2>Advanced Selectors</h2>
+            <p>Can use selectors like space, +,>, ~, and also pseudo selectors</p>
+            <ul>
+                <li><b>Space</b> is descendent selector, so main div selects all divs under main</li>
+                <li><b>></b> is child selector, so main > div selects all divs directly under main (and none under those)</li>
+                <li><b>+</b> is adjacent sibling selector, so .class2 + div selects all divs that are adjacent to .class2... presumably .class1 and .class3</li>
+                <li><b>~</b> is general sibling selector, so all siblings of it get selected</li>
+                <li><b>Note:</b> pseudo-class have one colon, pseudo-elements have two colons</li>
+                <li><b>:focus</b> the element focused on</li>
+                <li><b>:hover</b> the element hovered over</li>
+                <li><b>:root</b> the top element with no parent</li>
+                <li><b>:first/last-child</b> the first or last child (duh)</li>
+                <li><b>:empty</b> any element with no children</li>
+                <li><b>:only-child</b> any element that has no siblings</li>
+                <li><b>:nth-child</b> the nth child</li>
+                <li><b>::marker</b> allows you to customize markers for unordered lists</li>
+                <li><b>::first-letter/first-line</b> styles first line or first letter</li>
+                <li><b>::selection</b> lets you change the selection styles</li>
+                <li><b>::before/after</b> adds content before or after content</li>
+                <li><b><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Pseudo-elements">lots more!</a></b></li>
+            </ul>
+            <p>Attribute selectors also exist: use [attribute] to select any element with that attribute (such as href or src etc)</p>
+            <p>You can chain with selectors or specify value as well (i.e. img[src] or [src="jfdkfjkdjak.jpg"])</p>
+            <p>When specifying values, you can be more general:</p>
+            <ul>
+                <li>= specifies strings based on value</li>
+                <li>^= specifies strings from the start</li>
+                <li>$= specifies strings from the end</li>
+                <li>*= specifies strings that contain</li>
+                <li>There's a whole bunch of other interesting ways to specify to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute_selectors">reference</a></li>
+            </ul>
+        <h2>Positioning</h2>
+            <p>Five types of positioning:</p>
+            <ul>
+                <li>Static - default mode</li>
+                <li>Relative - like default, but can manipulate top/bottom/right/left, and also different for absolute</li>
+                <li>Absolute - removes from the document flow and positions absolutely using top/bottom/right/left from first non-static parent (which is where relative comes in handy) or to html if none exist</li>
+                <li>Fixed - similar to absolute, except positions relative to viewport instead of element, so stays in place when you scroll</li>
+                <li>Sticky - mix between relative and fixed: normally relative, but when you scroll enough it can stay in place as if it was fixed</li>
+            </ul>
+        <h2>CSS Functions</h2>
+            <p>CSS comes with a bunch of built in functions that are useful (but we can't create our own)</p>
+            <ul>
+                <li>rgb(r, g, b) - calculates a color</li>
+                <li>linear-gradient() - makes a gradient</li>
+                <li>calc() - lets you calculate things... one useful example is size of main, but many others</li>
+                <li>min() - returns lowest of a set of values</li>
+                <li>max() - returns greatest of a set of values</li>
+                <li>clamp() - takes three parameters, a min, a scaling, and a max value, then returns the scaling value clamped in between min and max</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/Functions">Lots more!</a></li>
+            </ul>
+        <h2>Custom Properties</h2>
+            <p>We can't define our own functions, but we can define our own variables!</p>
+            <p>Use the double hyphen (--) to declare a custom property with same naming conventions as usual: case sensitive, hyphen separated (--like-this, --not like this)</p>
+            <p>Evaluated through the var function, which can also take a fallback value</p>
+            <p>Scope exists, so if we define it in a selector only that selector and any descendents can access it</p>
+            <p>So usually we define them in :root, which is basically html but more specific, as everything is a descendent of :root</p>
+            <p>We can use this to create themes, and even look at preexisting preferences of the user through @media (prefers-color-scheme: ...) etc</p>
+        <h2>Browser Compatibility</h2>
+            <p>Important to think about</p>
+            <p>Imporant to <a href="https://caniuse.com/">check if you can use something</a></p>
+        <h2>Frameworks and Preprocessors</h2>
+            <p>...they exist...good to know about...not super helpful for early developers, getting solid foundation is generally more important</p>
+            <p>Frameworks are essentially bundles to make certain things easier/fast... kinda like templates, good for group work to increase readability for senior devs who know what's going on, less good for newbies</p>
+            <p>Preprocessors are essentially extensions to add extra capabilities, most of which are already being added to default css</p>
+
+
+
+    <h1>Forms</h1>
+        <h2>Form Basics</h2>
+            <p>The <code>form</code> element takes two attributes:</p>
+            <ol>
+                <li><code>action</code> - takes a url value which tells where the data should be taken to be processed (learn more about that later)</li>
+                <li><code>method</code> - tells which <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods">HTTP request method</a> the browser should do</li>
+            </ol>
+            <p>Some common methods: <code>GET</code> retrieves from server, and <code>POST</code> changes something on server</p>
+            <p>There are many form controls to customize a form:</p>
+            <ul>
+                <li>Input: very useful, allows user to directly input basically anything, specified with a <code>type</code> argument (i.e. text)... also takes placeholder attribute to specify a placeholder</li>
+                <li>Labels: attach text descriptions to something, specified with <code>for</code>... when label associated with input or another thing is clicked, it will auto focus on the speficied element</li>
+                <li>Name attribute: this is part of input, but super important: need a name attribute, essentially a variable name to describe the input to backend where it's being sent or it will be useless</li>
+                <li>Many others...</li>
+            </ul>
+            <p>Lots of different input types, like text, email, password, number, date</p>
+            <p>Text area also exists... a little confused what it does, I guess takes big amounts of text? Also can specify size with rows and columns, and give initial starter input? Let's test it out...</p>
+            <textarea rows="20" cols="40">Hello world...</textarea>
+            <p>Well that's cool... you can also resize it apparently!</p>
+            <p>Selections also exist, basically drop down lists to choose from, similar in syntax to unordered lists: select = ul, option = li, value specifies the value then text is displayed</p>
+            <p>Example: what's the best pet?</p>
+            <select>
+                <optgroup label="correct">
+                    <option value="dog">Dog</option>
+                </optgroup>
+                <optgroup label="incorrect">
+                    <option value="cat">Cat</option>
+                    <option value="else">Anything else</option>
+                </optgroup>
+            </select>
+            <p>Oh yeah, apparently you can use <code>optgroup</code> to divide options into gropus. Neat!</p>
+            <p>Radio buttons exist, here's an example straight from Odin:</p>
+                <input type="radio" id="child" name="ticket_type" value="child">
+                <label for="child">Child</label>
+
+                <input type="radio" id="adult" name="ticket_type" value="adult" checked>
+                <label for="adult">Adult</label>
+
+                <input type="radio" id="senior" name="ticket_type" value="senior">
+                <label for="senior">Senior</label>
+            <p>Notice how Adult is the default: that's specified through the checked attribute we can add to ont of them. Selecting one deselects the other since they have the same name</p>
+            <p>Checkboxes are basically the same thing but you can have multiple. Example: select all books that you have read:</p>
+                <div>
+                    <input id="harry-potter" type="checkbox" name="book_checks" value="harry-potter">
+                    <label for="harry-potter">HP</label>
+                </div>
+                
+                <div>
+                    <input id="lotr" type="checkbox" name="book_checks" value="lotr">
+                    <label for="lotr">LotR</label>
+                </div>
+                
+                <div>
+                    <input id="wot" type="checkbox" name="book_checks" value="wot">
+                    <label for="harry-potter">WoT</label>
+                </div>
+            <p>These ones are vertical because they're in divs. Also the same thing with checked default value applies</p>
+            <p>Buttons also exist, and are special in forms. They have three types: submit, reset, and button (general), which are pretty self-explanatory, but it's important to note that the default of a button in a form is submit so any button buttons need to be specified as such</p>
+            <p>Forms can get big, so styling exists, including fieldset and legend which basically categorize and give labels</p>
+            <p>Customizing these ranges in difficulty: some are easy, some are workable, some are impossible without javascript libraries or other solutions, but it can be important to override defaults since many browsers have different defaults</p>
+            <p>Oh, by the way, NEVER NEST FORMS apparently it's bad</p>
+            <p>Also apparently you can make things required with a required argument, similar to checked... also a pattern thing, I'm guessing that'll be in the next section about validation tho?</p>
+            <p>Several other attributes to note:</p>
+            <ul>
+                <li>readonly</li>
+                <li>disabled</li>
+                <li>placeholder</li>
+                <li>size</li>
+                <li>spellcheck</li>
+                <li>type - alr talked about this, interestingly password hides but still insecure, and also there is hidden which is hidden to the user, ex timestamp, also image apparently which sends coordinates of where it was clicked, also file is a type that lets you pick files, which can use accept attribute to directly accept from camera etc... tel for phone number and url also exist, also search for search field, also number apparently has min max and step, same thing with range which is basically slider bar</li>
+                <li>autofocus</li>
+                <li>form (used for elements not nested in the form, needs id)</li>
+
+            </ul>
+            <p>Several other things to note, non input related (this is getting disorganized, there's a lot of info though)</p>
+            <ul>
+                <li>textarea resizability can be customized and limited with resize property</li>
+                <li>adding <code>multiple</code> can make a select a multiselect</li>
+                <li>This one is cool: if you use a datalist to hold a select's options and give it an id, then specify list="thatid" in a text input, you can have an autocomplete select feature</li>
+                <li>meters exist with max min and optimum which recolors</li>
+                <li>progress exists for progress bars</li>
+            </ul>
+                
 </body>
