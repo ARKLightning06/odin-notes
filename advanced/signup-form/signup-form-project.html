@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="signup-styles.css">
+</head>
+<body>
+    <div class="left-side">
+        <figure>
+            <img src="dmytro-koplyk--a4h5faJ7Hc-unsplash.jpg" width="800px;" height="auto">
+            <div class="img-title">Beautiful Birds <img src="falcon-svg-silhouette.svg" width="auto" height="110vh" class="falcon-icon"></div>
+            <figcaption class="img-credits">Image by <a href="https://unsplash.com/@dkoplyk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dmytro Koplyk</a> at <a href="https://unsplash.com/">Unsplash</a></figcaption>
+        </figure>
+    </div>
+    <div class="right-side">
+        <div class="top-right">This is some dummy text for a fake landing page with a stock image of some birds! Look at those birds! Don't they just make you want to fill out this form???<br><br>They're staring deep into your soul, commanding you to fill it out...</div>
+        <div class="mid-right">
+            <form class="inner-form" action="" method="push">
+                <label><b>Do it!</b></label>
+                <div class="input-row">
+                    <div class="input-col">
+                        <label for="first-name">FIRST NAME</label>
+                        <input name="first-name" id="first-name">
+                    </div>
+                    <div class="input-col">
+                        <label for="last-name">LAST NAME</label>
+                        <input name="last-name" id="last-name">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-col">
+                        <label for="email">EMAIL</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input-col">
+                        <label for="phone-number">PHONE NUMBER</label>
+                        <input type="tel" name="phone-number" id="phone-number">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-col">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" name="password" id="password" required minlength="8">
+                    </div>
+                    <div class="input-col">
+                        <label for="confirm-password">CONFIRM PASSWORD</label>
+                        <input type="password" name="confirm-password" id="confirm-password" required minlength="8">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="bottom-right">
+            <button class="submit-button" type="submit">Create Account</button>
+            <div>Already have an account? <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Log in</a></div>
+        </div>
+    </div>
+</body>
+</html>
