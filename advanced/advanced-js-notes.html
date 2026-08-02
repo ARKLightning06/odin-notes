@@ -487,6 +487,21 @@
                         <p>Can do more stuff with js, including Constraint Validation API, which among other things lets us change default error messages</p>
                     <h2 class="lesson-category" id="lesson-form-project">Form Project: Sign up Form</h2>
                         <p><a href="signup-form/signup-form-project.html">Here's</a> an example form for all your formy needs!</p>
+                <h1 class="course-subcategory" id="grid">Grid</h1>
+                    <h2 class="lesson-category" id="lesson-create-grid">Creating a Grid</h2>
+                        <p>Use <code>display: grid</code> or <code>display: inline-grid</code> to create a grid (similar to flexbox)</p>
+                        <p>Use <code>grid-template-rows/columns:</code> css to define columns and rows. For example, <code>grid-template-rows: 50px, 50px, 50px; grid-template-columns: 50px, 50px;</code> would create a 3x2 grid, with three rows and two columns... or shorthand it with <code>grid-template: 50px 50px 50px / 50px 50px;</code></p>
+                        <p>Implicit grids: when you add extra content beyond the explicity defined grid, it will auto add a new row to fit. You can customize this with <code>grid-auto-rows && grid-auto-columns</code> to set the size, and <code>grid-auto-flow: column</code> to add new columns instead of new rows for extra content</p>
+                        <p>Use gap to set a gap between rows and columns... can do row-gap or column-gap, or shorthand gap to set both at once</p>
+                        <p>Some vocab to clarify:</p>
+                        <ul>
+                            <li>Grid line: horizontal or vertical lines that divide a grid. You can set a border to see them, or use dev tools to see them</li>
+                            <li>Grid track: Space between two adjacent grid lines... either horizontal or vertical, so could refer to rows or columns</li>
+                            <li>Grid cell: single 'unit' of the grid, space between two adjacent horizontal grid lines and vertical grid lines</li>
+                            <li>Grid gutter aka alley: synonym for gap</li>
+                        </ul>
+                        <p>Apparently repeat() is a function which could be pretty helpful for saving from typing out a bunch (ex: <code>repeat(n, 50px)</code></p>
+                        <p>Also fr is a unit that basically divides a fraction of total space, so 1fr 3fr is like 25 75%</p>
         </div>
         <div class="right-sidebar"></div>
     </div>
