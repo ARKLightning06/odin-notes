@@ -502,6 +502,20 @@
                         </ul>
                         <p>Apparently repeat() is a function which could be pretty helpful for saving from typing out a bunch (ex: <code>repeat(n, 50px)</code></p>
                         <p>Also fr is a unit that basically divides a fraction of total space, so 1fr 3fr is like 25 75%</p>
+                    <h2 class="lesson-category" id="lesson-positining-grid">Positioning Grid Elements</h2> 
+                        <p>Lines, cells, grid areas exist, see above for more info</p> 
+                        <p>Also <code>grid-column-start/end and grid-row-start/end</code> exist and let you manipulate positioning based on grid lines</p> 
+                        <p>Equivalently, <code>grid-column: x/y and grid-row: x/y</code> will be shortcode for the above values for x and y</p> 
+                        <p>Equivalently, <code>grid-area: w/x/y/z</code> will define (grid-row-start, grid-column-start, grid-row-end, grid-column-end) all at once, and you can also you negative numbers to count backward</p> <p>Can also use span to define a number of rows/columns to span, ex: grid-row: 1 / span 3 would start at line 1 and span 3 rows</p> 
+                    <h2 class="lesson-category" id="lesson-advanced-grid-props">Advanced Grid Properties</h2> 
+                        <p>resize: both allows user to resize a container</p> 
+                        <p>Mostly the rest is just about repeat and fr which already learned about earlier, repeat repeats stuff and fr is a fractional unit which is faster to write and good for resizeability, there's also min max and minmax (which takes the min and max), plust clamp() for setting ideal size</p> 
+                        <p>Auto-fill and auto-fit allow dynammic setting of size to fit a container... they return the highest possible integer without overflowing the grid, so for example: grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)), taking into account the size of the stuff inside the containers, will fill to the max</p> 
+                        <p>The difference is with leftovers: auto-fit will go to max size, and auto-fill will go to min size if there are leftovers</p> 
+                    <h2 class="lesson-category" id="lesson-flexbox-grid">Using Flexbox and Grid</h2> 
+                        <p>Neither flexbox nor grid is inherently superior to the other: there are times when flexbox is better, grid is better, or using both is better</p> 
+                        <p>To decide which is best, consider content first or layout first design. Generally flexbox is better for content first, while grid is better for layout first</p> 
+                        <p>Basically if you need intrinsic sizing (sizes to the content) flexbox is better</p>
         </div>
         <div class="right-sidebar"></div>
     </div>
