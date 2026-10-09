@@ -40,6 +40,11 @@ td {
   text-align: center;
 }
 
+td code {
+  text-align: left;
+  display: block;
+}
+
 tr:nth-child(even) td {
   background-color: rgb(250 250 250);
 }

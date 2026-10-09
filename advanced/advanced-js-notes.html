@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced JS Notes</title>
+    <title>Full Stack JS Notes</title>
     <link rel="stylesheet" href="advanced-styles.css">
     <!-- <script src="advanced-scripts.js" type="module"></script> -->
 </head>
 <body class="advanced-javascript-body">
     <div class="header">
-        <div>Notes on Advanced JS</div>
+        <div>Notes on Full Stack JS</div>
         <div class="links">
             <ul class="header-links">
                 <li><a class="header-link" href="../index.html">Home</a></li>
@@ -60,15 +60,38 @@
                             </tr>
                         </table>
                         <p>For embedding SVGs, can link it or embed it in inline directly... linking is cleaner, but inline has more potential</p>
-                        <p>Example inline SVG:</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="100px">
-                            <rect x="0" y="0" width="20" height="20" fill="blue"></rect>
-                            <circle cx="10" cy="10" r="9.5" fill="yellow"></circle>
-                            <circle cx="6" cy="6" r="2"></circle>
-                            <circle cx="14" cy="6" r="2"></circle>
-                            <circle cx="10" cy="13" r="5"></circle>
-                            <circle cx="10" cy="12" r="5" fill="yellow"></circle>
-                        </svg>
+                        <table>
+                            <tr>
+                                <th>Example inline SVG</th>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="100px">
+                                        <rect x="0" y="0" width="20" height="20" fill="blue"></rect>
+                                        <circle cx="10" cy="10" r="9.5" fill="yellow"></circle>
+                                        <circle cx="6" cy="6" r="2"></circle>
+                                        <circle cx="14" cy="6" r="2"></circle>
+                                        <circle cx="10" cy="13" r="5"></circle>
+                                        <circle cx="10" cy="12" r="5" fill="yellow"></circle>
+                                    </svg>
+                                </td>
+                                <td>
+                                    <code>
+                                        &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="100px"&gt; <br>
+                                            &nbsp; &lt;rect x="0" y="0" width="20" height="20" fill="blue"&gt;&lt;/rect&gt; <br>
+                                            &nbsp; &lt;circle cx="10" cy="10" r="9.5" fill="yellow"&gt;&lt;/circle&gt; <br>
+                                            &nbsp; &lt;circle cx="6" cy="6" r="2"&gt;&lt;/circle&gt; <br>
+                                            &nbsp; &lt;circle cx="14" cy="6" r="2"&gt;&lt;/circle&gt; <br>
+                                            &nbsp; &lt;circle cx="10" cy="13" r="5"&gt;&lt;/circle&gt; <br>
+                                            &nbsp; &lt;circle cx="10" cy="12" r="5" fill="yellow"&gt;&lt;/circle&gt; <br>
+                                        &lt;/svg&gt;
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Example linked SVG</th>
+                                <td><img src="../images/emoticon-cool.svg"></td>
+                                <td>Just use the &lt;img&gt; as normal: <code>&lt;img src="emoticon-cool.svg"&gt;</code></td>
+                            </tr>
+                        </table>
                     <h2 class="lesson-category" id="lesson-tables">Tables</h2>
                         <p>Tables are exactly what they sound like</p>
                         <table>
@@ -516,6 +539,8 @@
                         <p>Neither flexbox nor grid is inherently superior to the other: there are times when flexbox is better, grid is better, or using both is better</p> 
                         <p>To decide which is best, consider content first or layout first design. Generally flexbox is better for content first, while grid is better for layout first</p> 
                         <p>Basically if you need intrinsic sizing (sizes to the content) flexbox is better</p>
+                    <h2 class="lesson-category" id="lesson-admin-dash-project">Admin Dashboard Project: Example Admin Dashboard</h2>
+                        <p><a href="admin-dashboard/admin-dash.html">Here's</a> an example admin dashboard page, with all the nitty GRIDDY details.</p>
         </div>
         <div class="right-sidebar"></div>
     </div>
