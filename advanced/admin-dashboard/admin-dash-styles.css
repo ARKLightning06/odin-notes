@@ -1,24 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Henny+Penny&display=swap');
+
+:root {
+    --dark-green: #1E5E3A;
+    --light-green: #72DE80;
+    --accent: #D4F63D;
+    --white: #FFFFFF;
+    --dark-gray: #323B36;
+    --light-gray: #E6E6E6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
 
 .dashboard {
     display: grid;
-    grid-template-rows: 1fr, 4fr;
-    grid-template-columns: 1fr, 3fr;
+    grid-template-rows: 1fr 8fr;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+    margin: 0px;
 }
 
 .header {
-    background-color: #999;
+    background-color: var(--light-green);
+    display: grid;
+    grid-template-rows: 1fr 2fr;
 }
 
 .sidebar {
-    background-color: green;
+    background-color: var(--dark-green);
     grid-row: 1 / 3;
+    display: block;
+    padding: 10px;
 }
 
 .main-content {
-    background-color: #eee;
+    background-color: var(--light-gray);
 }
 
 .icon {
+    width: 75px;
+    height: 75px;
+    /* filter: brightness(0.9) invert(1); */
+    filter: invert(90%);
+    margin: 5px;
+}
+
+.icon-small {
     width: 50px;
+    height: 50px;
+    /* filter: brightness(0.9) invert(1); */
+    filter: invert(90%);
+    margin: 5px;
+}
+
+.sidebar-heading {
+    display: block;
+    color: var(--light-gray);
+    font-family: "Henny Penny", 'Courier New', Courier, monospace;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    margin: 20px;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.sidebar-item {
+    display: block;
+    color: var(--light-gray);
+    font-family: "Henny Penny", 'Courier New', Courier, monospace;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-top {
+    display: grid;
+    grid-template-columns: 100px 5fr 100px 100px 1fr;
+    margin-right: 40px;
+    align-items: center;
+}
+
+.header-bottom {
+    display: grid;
+    grid-template-columns: 200px 1fr 600px;
+    margin-right: 40px;
+    margin-left: 60px;
+    align-items: center;
+}
+
+.right-justify {
+    justify-self: flex-end;
+    grid-template-columns: 1fr, 1fr, 1fr;
+}
+
+.search-bar {
+  font-size: 16px;
+  height: 36px;
+  margin: 8px;
+  padding-left: 20px;
+  color: #333333;
+  background-color: var(--light-gray); /* Light gray background */
+  border: 2px solid transparent; /* Prevents layout shift when focus border appears */
+  border-radius: 9999px; /* Full pill-shaped rounded corners */
+  outline: none; /* Removes the default browser blue glow */
+  transition: all 0.2s ease-in-out;
+}
+
+.pfp {
+    width: 75px;
+    height: 75px;
+    margin: 5px;
+    border-radius: 50%;
+    object-fit: cover;
+    justify-self: center;
+}
+
+.pfp-large {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+    object-fit: cover;
+    justify-self: center;   
+}
+
+.username {
+    color: var(--light-gray);
+    font-family: "Henny Penny", 'Courier New', Courier, monospace;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.header-welcome {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-welcome-top {
+    font-size: 16px;
+    font-family: "Henny Penny", 'Courier New', Courier, monospace;
+    color: var(--light-gray);
+}
+
+.header-welcome-bottom {
+    font-size: 24px;
+    font-family: "Henny Penny", 'Courier New', Courier, monospace;
+    color: var(--light-gray);
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.header-button {
+    background: var(--dark-green);
+    color: var(--light-gray);
+    border-radius: 9999px; /* Full pill-shaped rounded corners */
+    outline: none; /* Removes the default browser blue glow */
+    border: 2px solid transparent; /* Prevents layout shift when focus border appears */
+    font-size: 24px;
+    font-family: "Henny Penny", 'Courier New', Courier, monospace;
+    width: 100px;
     height: 50px;
 }
