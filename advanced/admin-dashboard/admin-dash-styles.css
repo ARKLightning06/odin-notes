@@ -16,12 +16,18 @@ body {
     padding: 0;
 }
 
+a {
+    all: unset;
+    display: inline-block;
+}
+
 .sidebar-item,
 .sidebar-heading,
 .header button,
 .header img
 .trending-card,
-.projects img {
+.projects img,
+.projects a {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -30,7 +36,8 @@ body {
 .header button:hover,
 .header img:hover,
 .trending-card:hover,
-.projects img:hover {
+.projects img:hover,
+.projects a:hover {
     transform: translateY(-4px); /* Lifts up 4px */
     /* box-shadow: 0 6px 14px rgba(17, 23, 20, 0.2); */
 }
