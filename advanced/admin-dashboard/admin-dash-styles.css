@@ -1,17 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Henny+Penny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 :root {
     --dark-green: #1E5E3A;
     --light-green: #72DE80;
-    --accent: #D4F63D;
+    --accent: #FFD147;
     --white: #FFFFFF;
     --dark-gray: #323B36;
     --light-gray: #E6E6E6;
+    --black: #111714;
 }
 
 body {
     margin: 0;
     padding: 0;
+}
+
+.sidebar-item,
+.sidebar-heading,
+.header button,
+.header img
+.trending-card,
+.projects img {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sidebar-item:hover,
+.sidebar-heading:hover,
+.header button:hover,
+.header img:hover,
+.trending-card:hover,
+.projects img:hover {
+    transform: translateY(-4px); /* Lifts up 4px */
+    /* box-shadow: 0 6px 14px rgba(17, 23, 20, 0.2); */
 }
 
 .dashboard {
@@ -25,7 +46,7 @@ body {
 .header {
     background-color: var(--light-green);
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
 }
 
 .sidebar {
@@ -36,7 +57,10 @@ body {
 }
 
 .main-content {
+    display: grid;
     background-color: var(--light-gray);
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
 }
 
 .icon {
@@ -52,6 +76,19 @@ body {
     height: 50px;
     /* filter: brightness(0.9) invert(1); */
     filter: invert(90%);
+    margin: 5px;
+}
+
+.icon-small-dark {
+    width: 50px;
+    height: 50px;
+    /* filter: brightness(0.9) invert(1); */
+    margin: 5px;
+}
+
+.icon-smaller {
+    width: 30px;
+    height: 30px;
     margin: 5px;
 }
 
@@ -93,8 +130,8 @@ body {
 
 .header-bottom {
     display: grid;
-    grid-template-columns: 200px 1fr 600px;
-    margin-right: 40px;
+    grid-template-columns: 200px 1fr 300px;
+    margin-right: 90px;
     margin-left: 60px;
     align-items: center;
 }
@@ -118,8 +155,8 @@ body {
 }
 
 .pfp {
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     margin: 5px;
     border-radius: 50%;
     object-fit: cover;
@@ -135,13 +172,6 @@ body {
     justify-self: center;   
 }
 
-.username {
-    color: var(--light-gray);
-    font-family: "Henny Penny", 'Courier New', Courier, monospace;
-    font-size: 24px;
-    margin: 10px;
-}
-
 .header-welcome {
     display: flex;
     flex-direction: column;
@@ -150,13 +180,13 @@ body {
 .header-welcome-top {
     font-size: 16px;
     font-family: "Henny Penny", 'Courier New', Courier, monospace;
-    color: var(--light-gray);
+    color: var(--black);
 }
 
 .header-welcome-bottom {
     font-size: 24px;
     font-family: "Henny Penny", 'Courier New', Courier, monospace;
-    color: var(--light-gray);
+    color: var(--black);
 }
 
 .header-buttons {
@@ -176,3 +206,80 @@ body {
     width: 100px;
     height: 50px;
 }
+
+.projects {
+    grid-row: 1 / 3;
+    display: grid;
+    grid-template-rows: 20px 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 20px;    
+}
+
+.project-card {
+    background: var(--light-green);
+    display: grid;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: var(--accent) 12px solid;
+    color: var(--black);
+    font-family: "Fredoka", 'Courier New', Courier, monospace;
+}
+
+
+.announcements,
+.trending {
+    display: grid;
+    grid-template-rows: 20px 1fr;
+    gap: 30px;
+    padding: 20px;
+}
+
+.announcements-block,
+.trending-block {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    background: var(--light-green);
+    font-size: 12px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.announcement-card {
+    padding: 10px;
+    color: var(--black);
+    font-family: "Fredoka", 'Courier New', Courier, monospace;
+}
+
+.trending-card {
+    display: flex;
+    color: var(--black);
+    font-family: "Fredoka", 'Courier New', Courier, monospace;
+    font-size: 16px;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+
+}
+
+.announcement-card-middle {
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+.main-content-header {
+    font-size: 18px;
+
+}
+
+.simple-text {
+    color: var(--black);
+    font-family: "Fredoka", 'Courier New', Courier, monospace;
+    font-weight: 500;
+}
+
+#username {
+    font-size: 24px;
+    margin: 10px;
+}
+
