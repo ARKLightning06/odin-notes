@@ -115,7 +115,11 @@ button {
     flex-grow: 1;
     flex-shrink: 1;
     background: var(--sidebar-color);
-    min-width: 25px;
+    min-width: 200px;
+    position: sticky;
+    top: 0px;
+    align-self: flex-start;
+    height: 100vh;
 }
 
 .right-sidebar {
@@ -169,8 +173,10 @@ button {
 
 .footer {
   background: var(--header-footer-color);
-  color: var(--text-color);
-  flex-basis: 36px;
+  color: var(--sidebar-color);
+  font-size: 2em;
+  font-weight: 500px;
+  flex-basis: 120px;
   display: flex;
   justify-content: center;
   align-items: center;

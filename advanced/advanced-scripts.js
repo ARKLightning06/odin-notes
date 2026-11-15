@@ -21,16 +21,30 @@ class SidebarControls {
             listElementPrimary.appendChild(primaryLink);
             this.listElement.appendChild(listElementPrimary);
             for (var secondary of secondaries) {
-                let listElementSecondary = document.createElement("li");
-                let secondaryLink = document.createElement("a");
-                secondaryLink.textContent = secondary.textContent;
-                secondaryLink.href = "#" + secondary.id;
-                secondaryLink.classList.add("neutral-link");
-                listElementSecondary.appendChild(secondaryLink);
-                listElementSecondary.classList.add("secondary-list-item");
-                this.listElement.appendChild(listElementSecondary);
+                if (this.containsSubElement(secondary, primary, primaries)) {
+                    let listElementSecondary = document.createElement("li");
+                    let secondaryLink = document.createElement("a");
+                    secondaryLink.textContent = secondary.textContent;
+                    secondaryLink.href = "#" + secondary.id;
+                    secondaryLink.classList.add("neutral-link");
+                    listElementSecondary.appendChild(secondaryLink);
+                    listElementSecondary.classList.add("secondary-list-item");
+                    this.listElement.appendChild(listElementSecondary);
+                }
             }
         }
+    }
+
+    containsSubElement(subEl, el, elList) {
+        //returns true if subEl is in between el and the next el in el List
+        // assumes elList is nonempty, and el is a member of el list
+        const elIndex = elList.indexOf(el);
+        const len = elList.length;
+        console.log("index, length: " + elIndex + len);
+        if (elIndex + 1 == len) {
+            return Boolean(el.compareDocumentPosition(subEl) & Node.DOCUMENT_POSITION_FOLLOWING);
+        }
+        return Boolean(el.compareDocumentPosition(subEl) & Node.DOCUMENT_POSITION_FOLLOWING) && Boolean(elList[elIndex + 1].compareDocumentPosition(subEl) & Node.DOCUMENT_POSITION_PRECEDING);
     }
 }
 
