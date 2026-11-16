@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+body {
+    margin: 0px;
+}
+
+.header {
+    font-family: 'Rubik Mono One', 'Courier New', Courier, monospace;
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(./library-peacock.jpg);
+    background-size: cover;
+    background-position: top;
+    height: 250px;
+    color: #F7FBF9;
+}
+
+.main-content {
+    background: #2BE496;
+}
+
+.controls {
+    height: 150px;
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.searchbar {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.searchbar input {
+    background-color: #ffffff;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 320px;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #1f2937;
+}
+
+.searchbar input:focus {
+    outline: none; 
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
